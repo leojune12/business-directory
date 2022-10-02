@@ -18,7 +18,7 @@ if (App::environment('production')) {
 }
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
 Route::get('/dashboard', function () {
