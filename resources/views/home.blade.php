@@ -1,19 +1,17 @@
 <x-app-layout>
-    <!-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
-                </div>
-            </div>
-        </div>
-    </div> -->
+	@push('links')
+		<link rel="stylesheet" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../css/owl.carousel.min.css">
+        <link rel="stylesheet" href="../../css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="../../css/jquery.fancybox.min.css">
+        <link rel="stylesheet" href="../../css/daterangepicker.css">
+        <link rel="stylesheet" href="../../css/aos.css">
+        <link rel="stylesheet" href="../../scss/style.css">
+        <link rel="stylesheet" href="../../fonts/icomoon/style.css">
+        <link rel="stylesheet" href="../../fonts/flaticon/font/flaticon.css">
+	@endpush
+
     <div class="site-mobile-menu site-navbar-target">
 		<div class="site-mobile-menu-header">
 			<div class="site-mobile-menu-close">
@@ -26,7 +24,7 @@
 	<nav class="site-nav">
 		<div class="container">
 			<div class="site-navigation">
-				<a href="index.html" class="logo m-0">Tour <span class="text-primary">.</span></a>
+				<a href="/" class="logo m-0">RoxasIndex <span class="text-primary">.</span></a>
 
 				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
 					<li class="active"><a href="index.html">Home</a></li>
@@ -49,6 +47,7 @@
 					<li><a href="services.html">Services</a></li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="contact.html">Contact Us</a></li>
+					<li><a href="/login">Sign In</a></li>
 				</ul>
 
 				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
@@ -111,11 +110,11 @@
 				</div>
 				<div class="col-lg-5">
 					<div class="slides">
-						<img src="{{ Vite::asset('resources/images/hero-slider-1.jpg') }}" alt="Image" class="img-fluid active">
-						<img src="{{ Vite::asset('resources/images/hero-slider-2.jpg') }}" alt="Image" class="img-fluid">
-						<img src="{{ Vite::asset('resources/images/hero-slider-3.jpg') }}" alt="Image" class="img-fluid">
-						<img src="{{ Vite::asset('resources/images/hero-slider-4.jpg') }}" alt="Image" class="img-fluid">
-						<img src="{{ Vite::asset('resources/images/hero-slider-5.jpg') }}" alt="Image" class="img-fluid">
+						<img src="../../images/hero-slider-1.jpg" alt="Image" class="img-fluid active">
+						<img src="../../images/hero-slider-2.jpg" alt="Image" class="img-fluid">
+						<img src="../../images/hero-slider-3.jpg" alt="Image" class="img-fluid">
+						<img src="../../images/hero-slider-4.jpg" alt="Image" class="img-fluid">
+						<img src="../../images/hero-slider-5.jpg" alt="Image" class="img-fluid">
 					</div>
 				</div>
 			</div>
@@ -133,7 +132,7 @@
 			</div>
 			<div class="row align-items-stretch">
 				<div class="col-lg-4 order-lg-1">
-					<div class="h-100"><div class="frame h-100"><div class="feature-img-bg h-100" style="background-image: url('{{ Vite::asset('resources/images/hero-slider-1.jpg') }}');"></div></div></div>
+					<div class="h-100"><div class="frame h-100"><div class="feature-img-bg h-100" style="background-image: url('../../images/hero-slider-1.jpg');"></div></div></div>
 				</div>
 
 				<div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-1" >
@@ -230,63 +229,63 @@
 			<div class="owl-carousel owl-3-slider">
 
 				<div class="item">
-					<a class="media-thumb" href="{{ Vite::asset('resources/images/hero-slider-1.jpg') }}" data-fancybox="gallery">
+					<a class="media-thumb" href="../../images/hero-slider-1.jpg" data-fancybox="gallery">
 						<div class="media-text">
 							<h3>Pragser Wildsee</h3>
 							<span class="location">Italy</span>
 						</div>
-						<img src="{{ Vite::asset('resources/images/hero-slider-1.jpg') }}" alt="Image" class="img-fluid">
+						<img src="../../images/hero-slider-1.jpg" alt="Image" class="img-fluid">
 					</a> 
 				</div>
 
 				<div class="item">
-					<a class="media-thumb" href="{{ Vite::asset('resources/images/hero-slider-2.jpg') }}" data-fancybox="gallery">
+					<a class="media-thumb" href="../../images/hero-slider-2.jpg" data-fancybox="gallery">
 						<div class="media-text">
 							<h3>Oia</h3>
 							<span class="location">Greece</span>
 						</div>
-						<img src="{{ Vite::asset('resources/images/hero-slider-2.jpg') }}" alt="Image" class="img-fluid">
+						<img src="../../images/hero-slider-2.jpg" alt="Image" class="img-fluid">
 					</a> 
 				</div>
 
 				<div class="item">
-					<a class="media-thumb" href="{{ Vite::asset('resources/images/hero-slider-3.jpg') }}" data-fancybox="gallery">
+					<a class="media-thumb" href="../../images/hero-slider-3.jpg" data-fancybox="gallery">
 						<div class="media-text">
 							<h3>Perhentian Islands</h3>
 							<span class="location">Malaysia</span>
 						</div>
-						<img src="{{ Vite::asset('resources/images/hero-slider-3.jpg') }}" alt="Image" class="img-fluid">
+						<img src="../../images/hero-slider-3.jpg" alt="Image" class="img-fluid">
 					</a> 
 				</div>
 
 
 				<div class="item">
-					<a class="media-thumb" href="{{ Vite::asset('resources/images/hero-slider-4.jpg') }}" data-fancybox="gallery">
+					<a class="media-thumb" href="../../images/hero-slider-4.jpg" data-fancybox="gallery">
 						<div class="media-text">
 							<h3>Rialto Bridge</h3>
 							<span class="location">Italy</span>
 						</div>
-						<img src="{{ Vite::asset('resources/images/hero-slider-4.jpg') }}" alt="Image" class="img-fluid">
+						<img src="../../images/hero-slider-4.jpg" alt="Image" class="img-fluid">
 					</a> 
 				</div>
 
 				<div class="item">
-					<a class="media-thumb" href="{{ Vite::asset('resources/images/hero-slider-5.jpg') }}" data-fancybox="gallery">
+					<a class="media-thumb" href="../../images/hero-slider-5.jpg" data-fancybox="gallery">
 						<div class="media-text">
 							<h3>San Francisco, United States</h3>
 							<span class="location">United States</span>
 						</div>
-						<img src="{{ Vite::asset('resources/images/hero-slider-5.jpg') }}" alt="Image" class="img-fluid">
+						<img src="../../images/hero-slider-5.jpg" alt="Image" class="img-fluid">
 					</a> 
 				</div>
 
 				<div class="item">
-					<a class="media-thumb" href="{{ Vite::asset('resources/images/hero-slider-1.jpg') }}" data-fancybox="gallery">
+					<a class="media-thumb" href="../../images/hero-slider-1.jpg" data-fancybox="gallery">
 						<div class="media-text">
 							<h3>Lake Thun</h3>
 							<span class="location">Switzerland</span>
 						</div>
-						<img src="{{ Vite::asset('resources/images/hero-slider-2.jpg') }}" alt="Image" class="img-fluid">
+						<img src="../../images/hero-slider-2.jpg" alt="Image" class="img-fluid">
 					</a> 
 				</div>
 
@@ -305,7 +304,7 @@
 					<div class="owl-single owl-carousel no-nav">
 						<div class="testimonial mx-auto">
 							<figure class="img-wrap">
-								<img src="{{ Vite::asset('resources/images/person_2.jpg') }}" alt="Image" class="img-fluid">
+								<img src="../../images/person_2.jpg" alt="Image" class="img-fluid">
 							</figure>
 							<h3 class="name">Adam Aderson</h3>
 							<blockquote>
@@ -315,7 +314,7 @@
 
 						<div class="testimonial mx-auto">
 							<figure class="img-wrap">
-								<img src="{{ Vite::asset('resources/images/person_3.jpg') }}" alt="Image" class="img-fluid">
+								<img src="../../images/person_3.jpg" alt="Image" class="img-fluid">
 							</figure>
 							<h3 class="name">Lukas Devlin</h3>
 							<blockquote>
@@ -325,7 +324,7 @@
 
 						<div class="testimonial mx-auto">
 							<figure class="img-wrap">
-								<img src="{{ Vite::asset('resources/images/person_4.jpg') }}" alt="Image" class="img-fluid">
+								<img src="../../images/person_4.jpg" alt="Image" class="img-fluid">
 							</figure>
 							<h3 class="name">Kayla Bryant</h3>
 							<blockquote>
@@ -352,7 +351,7 @@
 			<div class="row">
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
 					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="{{ Vite::asset('resources/images/hero-slider') }}-1.jpg" alt="Image" class="img-fluid"></a>
+						<a href="#" class="d-block mb-3"><img src="../../images/hero-slider-1.jpg" alt="Image" class="img-fluid"></a>
 						<span class="d-flex align-items-center loc mb-2">
 							<span class="icon-room mr-3"></span>
 							<span>Italy</span>
@@ -371,7 +370,7 @@
 				</div>
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
 					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="{{ Vite::asset('resources/images/hero-slider') }}-2.jpg" alt="Image" class="img-fluid"></a>
+						<a href="#" class="d-block mb-3"><img src="../../images/hero-slider-2.jpg" alt="Image" class="img-fluid"></a>
 						<span class="d-flex align-items-center loc mb-2">
 							<span class="icon-room mr-3"></span>
 							<span>United States</span>
@@ -390,7 +389,7 @@
 				</div>
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
 					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="{{ Vite::asset('resources/images/hero-slider') }}-3.jpg" alt="Image" class="img-fluid"></a>
+						<a href="#" class="d-block mb-3"><img src="../../images/hero-slider-3.jpg" alt="Image" class="img-fluid"></a>
 						<span class="d-flex align-items-center loc mb-2">
 							<span class="icon-room mr-3"></span>
 							<span>Malaysia</span>
@@ -409,7 +408,7 @@
 				</div>
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
 					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="{{ Vite::asset('resources/images/hero-slider') }}-4.jpg" alt="Image" class="img-fluid"></a>
+						<a href="#" class="d-block mb-3"><img src="../../images/hero-slider-4.jpg" alt="Image" class="img-fluid"></a>
 
 						<span class="d-flex align-items-center loc mb-2">
 							<span class="icon-room mr-3"></span>
@@ -441,7 +440,7 @@
 						<a id="play-video" class="video-play-button" href="https://www.youtube.com/watch?v=mwtbEGNABWU" data-fancybox>
 							<span></span>
 						</a>
-						<img src="{{ Vite::asset('resources/images/hero-slider') }}-2.jpg" alt="Image" class="img-fluid rounded-20">
+						<img src="../../images/hero-slider-2.jpg" alt="Image" class="img-fluid rounded-20">
 					</figure>
 				</div>
 
@@ -563,4 +562,46 @@
 			<span class="sr-only">Loading...</span>
 		</div>
 	</div>
+
+	@push('scripts')
+		<script src="../../js/jquery-3.4.1.min.js"></script>
+        <script src="../../js/popper.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/owl.carousel.min.js"></script>
+        <script src="../../js/jquery.animateNumber.min.js"></script>
+        <script src="../../js/jquery.waypoints.min.js"></script>
+        <script src="../../js/jquery.fancybox.min.js"></script>
+        <script src="../../js/aos.js"></script>
+        <script src="../../js/moment.min.js"></script>
+        <script src="../../js/daterangepicker.js"></script>
+        <script src="../../js/typed.js"></script>
+        <script>
+            $(function() {
+                var slides = $('.slides'),
+                images = slides.find('img');
+
+                images.each(function(i) {
+                    $(this).attr('data-id', i + 1);
+                })
+
+                var typed = new Typed('.typed-words', {
+                    strings: ["San Francisco."," Paris."," New Zealand.", " Maui.", " London."],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true,
+                    preStringTyped: (arrayPos, self) => {
+                        arrayPos++;
+                        // console.log(arrayPos);
+                        $('.slides img').removeClass('active');
+                        $('.slides img[data-id="'+arrayPos+'"]').addClass('active');
+                    }
+
+                });
+            })
+        </script>
+        <script src="../../js/custom.js"></script>
+	@endpush
 </x-app-layout>
