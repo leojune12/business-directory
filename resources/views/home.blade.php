@@ -1,607 +1,403 @@
 <x-app-layout>
 
 	@push('links')
-		<link rel="stylesheet" href="../../css/bootstrap.min.css">
-        <link rel="stylesheet" href="../../css/owl.carousel.min.css">
-        <link rel="stylesheet" href="../../css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="../../css/jquery.fancybox.min.css">
-        <link rel="stylesheet" href="../../css/daterangepicker.css">
-        <link rel="stylesheet" href="../../css/aos.css">
-        <link rel="stylesheet" href="../../scss/style.css">
-        <link rel="stylesheet" href="../../fonts/icomoon/style.css">
-        <link rel="stylesheet" href="../../fonts/flaticon/font/flaticon.css">
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap.min.css">
+
+		<!-- Additional CSS Files -->
+		<link rel="stylesheet" href="../../css/fontawesome.css">
+        <link rel="stylesheet" href="../../css/templatemo-woox-travel.css">
+        <link rel="stylesheet" href="../../css/owl.css">
+        <link rel="stylesheet" href="../../css/animate.css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
 	@endpush
 
-    <div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
+    <!-- ***** Preloader Start ***** -->
+	<div id="js-preloader" class="js-preloader">
+		<div class="preloader-inner">
+		<span class="dot"></span>
+		<div class="dots">
+			<span></span>
+			<span></span>
+			<span></span>
 		</div>
-		<div class="site-mobile-menu-body"></div>
-	</div>
-
-	<nav class="site-nav">
-		<div class="container">
-			<div class="site-navigation">
-				<a href="/" class="logo m-0">RoxasIndex <span class="text-primary">.</span></a>
-
-				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-					<li class="active"><a href="index.html">Home</a></li>
-					<li class="has-children">
-						<a href="#">Dropdown</a>
-						<ul class="dropdown">
-							<li><a href="elements.html">Elements</a></li>
-							<li><a href="#">Menu One</a></li>
-							<li class="has-children">
-								<a href="#">Menu Two</a>
-								<ul class="dropdown">
-									<li><a href="#">Sub Menu One</a></li>
-									<li><a href="#">Sub Menu Two</a></li>
-									<li><a href="#">Sub Menu Three</a></li>
-								</ul>
-							</li>
-							<li><a href="#">Menu Three</a></li>
-						</ul>
-					</li>
-					<li><a href="services.html">Services</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="contact.html">Contact Us</a></li>
-					<li><a href="/login">Sign In</a></li>
-				</ul>
-
-				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
-					<span></span>
-				</a>
-
-			</div>
-		</div>
-	</nav>
-
-
-	<div class="hero">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-7">
-					<div class="intro-wrap">
-						<h1 class="mb-5"><span class="d-block">Let's Enjoy Your</span> Trip In <span class="typed-words"></span></h1>
-
-						<div class="row">
-							<div class="col-12">
-								<form class="form">
-									<div class="row mb-2">
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-											<select name="" id="" class="form-control custom-select">
-												<option value="">Destination</option>
-												<option value="">Peru</option>
-												<option value="">Japan</option>
-												<option value="">Thailand</option>
-												<option value="">Brazil</option>
-												<option value="">United States</option>
-												<option value="">Israel</option>
-												<option value="">China</option>
-												<option value="">Russia</option>
-											</select>
-										</div>
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-5">
-											<input type="text" class="form-control" name="daterange">
-										</div>
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-3">
-											<input type="text" class="form-control" placeholder="# of People">
-										</div>
-
-									</div>    
-									<div class="row align-items-center">
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-											<input type="submit" class="btn btn-primary btn-block" value="Search">
-										</div>
-										<div class="col-lg-8">
-											<label class="control control--checkbox mt-3">
-												<span class="caption">Save this search</span>
-												<input type="checkbox" checked="checked" />
-												<div class="control__indicator"></div>
-											</label>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-5">
-					<div class="slides">
-						<img src="../../images/hero-slider-1.jpg" alt="Image" class="img-fluid active">
-						<img src="../../images/hero-slider-2.jpg" alt="Image" class="img-fluid">
-						<img src="../../images/hero-slider-3.jpg" alt="Image" class="img-fluid">
-						<img src="../../images/hero-slider-4.jpg" alt="Image" class="img-fluid">
-						<img src="../../images/hero-slider-5.jpg" alt="Image" class="img-fluid">
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
+	<!-- ***** Preloader End ***** -->
 
-
-	<div class="untree_co-section">
-		<div class="container">
-			<div class="row mb-5 justify-content-center">
-				<div class="col-lg-6 text-center">
-					<h2 class="section-title text-center mb-3">Our Services</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-				</div>
-			</div>
-			<div class="row align-items-stretch">
-				<div class="col-lg-4 order-lg-1">
-					<div class="h-100"><div class="frame h-100"><div class="feature-img-bg h-100" style="background-image: url('../../images/hero-slider-1.jpg');"></div></div></div>
-				</div>
-
-				<div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-1" >
-
-					<div class="feature-1 d-md-flex">
-						<div class="align-self-center">
-							<span class="flaticon-house display-4 text-primary"></span>
-							<h3>Beautiful Condo</h3>
-							<p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
-						</div>
-					</div>
-
-					<div class="feature-1 ">
-						<div class="align-self-center">
-							<span class="flaticon-restaurant display-4 text-primary"></span>
-							<h3>Restaurants & Cafe</h3>
-							<p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-3" >
-
-					<div class="feature-1 d-md-flex">
-						<div class="align-self-center">
-							<span class="flaticon-mail display-4 text-primary"></span>
-							<h3>Easy to Connect</h3>
-							<p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
-						</div>
-					</div>
-
-					<div class="feature-1 d-md-flex">
-						<div class="align-self-center">
-							<span class="flaticon-phone-call display-4 text-primary"></span>
-							<h3>24/7 Support</h3>
-							<p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<div class="untree_co-section count-numbers py-5">
+	<!-- ***** Header Area Start ***** -->
+	<header class="header-area header-sticky">
 		<div class="container">
 			<div class="row">
-				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
-					<div class="counter-wrap">
-						<div class="counter">
-							<span class="" data-number="9313">0</span>
-						</div>
-						<span class="caption">No. of Travels</span>
-					</div>
-				</div>
-				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
-					<div class="counter-wrap">
-						<div class="counter">
-							<span class="" data-number="8492">0</span>
-						</div>
-						<span class="caption">No. of Clients</span>
-					</div>
-				</div>
-				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
-					<div class="counter-wrap">
-						<div class="counter">
-							<span class="" data-number="100">0</span>
-						</div>
-						<span class="caption">No. of Employees</span>
-					</div>
-				</div>
-				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
-					<div class="counter-wrap">
-						<div class="counter">
-							<span class="" data-number="120">0</span>
-						</div>
-						<span class="caption">No. of Countries</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-	<div class="untree_co-section">
-		<div class="container">
-			<div class="row text-center justify-content-center mb-5">
-				<div class="col-lg-7"><h2 class="section-title text-center">Popular Destination</h2></div>
-			</div>
-
-			<div class="owl-carousel owl-3-slider">
-
-				<div class="item">
-					<a class="media-thumb" href="../../images/hero-slider-1.jpg" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>Pragser Wildsee</h3>
-							<span class="location">Italy</span>
-						</div>
-						<img src="../../images/hero-slider-1.jpg" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="../../images/hero-slider-2.jpg" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>Oia</h3>
-							<span class="location">Greece</span>
-						</div>
-						<img src="../../images/hero-slider-2.jpg" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="../../images/hero-slider-3.jpg" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>Perhentian Islands</h3>
-							<span class="location">Malaysia</span>
-						</div>
-						<img src="../../images/hero-slider-3.jpg" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-
-				<div class="item">
-					<a class="media-thumb" href="../../images/hero-slider-4.jpg" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>Rialto Bridge</h3>
-							<span class="location">Italy</span>
-						</div>
-						<img src="../../images/hero-slider-4.jpg" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="../../images/hero-slider-5.jpg" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>San Francisco, United States</h3>
-							<span class="location">United States</span>
-						</div>
-						<img src="../../images/hero-slider-5.jpg" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="../../images/hero-slider-1.jpg" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>Lake Thun</h3>
-							<span class="location">Switzerland</span>
-						</div>
-						<img src="../../images/hero-slider-2.jpg" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-			</div>
-
-		</div>
-	</div>
-
-
-	<div class="untree_co-section testimonial-section mt-5">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-7 text-center">
-					<h2 class="section-title text-center mb-5">Testimonials</h2>
-
-					<div class="owl-single owl-carousel no-nav">
-						<div class="testimonial mx-auto">
-							<figure class="img-wrap">
-								<img src="../../images/person_2.jpg" alt="Image" class="img-fluid">
-							</figure>
-							<h3 class="name">Adam Aderson</h3>
-							<blockquote>
-								<p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							</blockquote>
-						</div>
-
-						<div class="testimonial mx-auto">
-							<figure class="img-wrap">
-								<img src="../../images/person_3.jpg" alt="Image" class="img-fluid">
-							</figure>
-							<h3 class="name">Lukas Devlin</h3>
-							<blockquote>
-								<p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							</blockquote>
-						</div>
-
-						<div class="testimonial mx-auto">
-							<figure class="img-wrap">
-								<img src="../../images/person_4.jpg" alt="Image" class="img-fluid">
-							</figure>
-							<h3 class="name">Kayla Bryant</h3>
-							<blockquote>
-								<p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							</blockquote>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="untree_co-section">
-		<div class="container">
-			<div class="row justify-content-center text-center mb-5">
-				<div class="col-lg-6">
-					<h2 class="section-title text-center mb-3">Special Offers &amp; Discounts</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="../../images/hero-slider-1.jpg" alt="Image" class="img-fluid"></a>
-						<span class="d-flex align-items-center loc mb-2">
-							<span class="icon-room mr-3"></span>
-							<span>Italy</span>
-						</span>
-						<div class="d-flex align-items-center">
-							<div>
-								<h3><a href="#">Rialto Mountains</a></h3>
-								<div class="price ml-auto">
-									<span>$520.00</span>
-								</div>
-							</div>
-							
-						</div>
-						
-					</div>
-				</div>
-				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="../../images/hero-slider-2.jpg" alt="Image" class="img-fluid"></a>
-						<span class="d-flex align-items-center loc mb-2">
-							<span class="icon-room mr-3"></span>
-							<span>United States</span>
-						</span>
-						<div class="d-flex align-items-center">
-							<div>
-								<h3><a href="#">San Francisco</a></h3>
-								<div class="price ml-auto">
-									<span>$520.00</span>
-								</div>
-							</div>
-							
-						</div>
-						
-					</div>
-				</div>
-				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="../../images/hero-slider-3.jpg" alt="Image" class="img-fluid"></a>
-						<span class="d-flex align-items-center loc mb-2">
-							<span class="icon-room mr-3"></span>
-							<span>Malaysia</span>
-						</span>
-						<div class="d-flex align-items-center">
-							<div>
-								<h3><a href="#">Perhentian Islands</a></h3>
-								<div class="price ml-auto">
-									<span>$750.00</span>
-								</div>
-							</div>
-							
-						</div>
-						
-					</div>
-				</div>
-				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="../../images/hero-slider-4.jpg" alt="Image" class="img-fluid"></a>
-
-						<span class="d-flex align-items-center loc mb-2">
-							<span class="icon-room mr-3"></span>
-							<span>Switzerland</span>
-						</span>
-
-						<div class="d-flex align-items-center">
-							<div>
-								<h3><a href="#">Lake Thun</a></h3>
-								<div class="price ml-auto">
-									<span>$520.00</span>
-								</div>
-							</div>
-							
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="untree_co-section">
-		<div class="container">
-			<div class="row justify-content-between align-items-center">
-				
-				<div class="col-lg-6">
-					<figure class="img-play-video">
-						<a id="play-video" class="video-play-button" href="https://www.youtube.com/watch?v=mwtbEGNABWU" data-fancybox>
-							<span></span>
+				<div class="col-12">
+					<nav class="main-nav">
+						<!-- ***** Logo Start ***** -->
+						<a href="index.html" class="logo">
+							<img src="../../images/logo.png" alt="">
 						</a>
-						<img src="../../images/hero-slider-2.jpg" alt="Image" class="img-fluid rounded-20">
-					</figure>
-				</div>
-
-				<div class="col-lg-5">
-					<h2 class="section-title text-left mb-4">Take a look at Tour Video</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-
-					<p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-
-					<ul class="list-unstyled two-col clearfix">
-						<li>Outdoor recreation activities</li>
-						<li>Airlines</li>
-						<li>Car Rentals</li>
-						<li>Cruise Lines</li>
-						<li>Hotels</li>
-						<li>Railways</li>
-						<li>Travel Insurance</li>
-						<li>Package Tours</li>
-						<li>Insurance</li>
-						<li>Guide Books</li>
-					</ul>
-
-					<p><a href="#" class="btn btn-primary">Get Started</a></p>
-
-					
+						<!-- ***** Logo End ***** -->
+						<!-- ***** Menu Start ***** -->
+						<ul class="nav">
+							<li><a href="index.html" class="active">Home</a></li>
+							<li><a href="about.html">About</a></li>
+							<li><a href="deals.html">Deals</a></li>
+							<li><a href="reservation.html">Reservation</a></li>
+							<li><a href="reservation.html">Book Yours</a></li>
+						</ul>   
+						<a class='menu-trigger'>
+							<span>Menu</span>
+						</a>
+						<!-- ***** Menu End ***** -->
+					</nav>
 				</div>
 			</div>
 		</div>
-	</div>
+	</header>
+	<!-- ***** Header Area End ***** -->
 
-	
-	
-	<div class="py-5 cta-section">
-		<div class="container">
-			<div class="row text-center">
-				<div class="col-md-12">
-					<h2 class="mb-2 text-white">Lets you Explore the Best. Contact Us Now</h2>
-					<p class="mb-4 lead text-white text-white-opacity">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, fugit?</p>
-					<p class="mb-0"><a href="booking.html" class="btn btn-outline-white text-white btn-md font-weight-bold">Get in touch</a></p>
+	<!-- ***** Main Banner Area Start ***** -->
+	<section id="section-1">
+		<div class="content-slider">
+		<input type="radio" id="banner1" class="sec-1-input" name="banner" checked>
+		<input type="radio" id="banner2" class="sec-1-input" name="banner">
+		<input type="radio" id="banner3" class="sec-1-input" name="banner">
+		<input type="radio" id="banner4" class="sec-1-input" name="banner">
+		<div class="slider">
+			<div id="top-banner-1" class="banner">
+			<div class="banner-inner-wrapper header-text">
+				<div class="main-caption">
+				<h2>Take a Glimpse Into The Beautiful Country Of:</h2>
+				<h1>Caribbean</h1>
+				<div class="border-button"><a href="about.html">Go There</a></div>
 				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="site-footer">
-		<div class="inner first">
-			<div class="container">
+				<div class="container">
 				<div class="row">
-					<div class="col-md-6 col-lg-4">
-						<div class="widget">
-							<h3 class="heading">About Tour</h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+					<div class="col-lg-12">
+					<div class="more-info">
+						<div class="row">
+						<div class="col-lg-3 col-sm-6 col-6">
+							<i class="fa fa-user"></i>
+							<h4><span>Population:</span><br>44.48 M</h4>
 						</div>
-						<div class="widget">
-							<ul class="list-unstyled social">
-								<li><a href="#"><span class="icon-twitter"></span></a></li>
-								<li><a href="#"><span class="icon-instagram"></span></a></li>
-								<li><a href="#"><span class="icon-facebook"></span></a></li>
-								<li><a href="#"><span class="icon-linkedin"></span></a></li>
-								<li><a href="#"><span class="icon-dribbble"></span></a></li>
-								<li><a href="#"><span class="icon-pinterest"></span></a></li>
-								<li><a href="#"><span class="icon-apple"></span></a></li>
-								<li><a href="#"><span class="icon-google"></span></a></li>
-							</ul>
+						<div class="col-lg-3 col-sm-6 col-6">
+							<i class="fa fa-globe"></i>
+							<h4><span>Territory:</span><br>275.400 KM<em>2</em></h4>
 						</div>
-					</div>
-					<div class="col-md-6 col-lg-2 pl-lg-5">
-						<div class="widget">
-							<h3 class="heading">Pages</h3>
-							<ul class="links list-unstyled">
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
+						<div class="col-lg-3 col-sm-6 col-6">
+							<i class="fa fa-home"></i>
+							<h4><span>AVG Price:</span><br>$946.000</h4>
+						</div>
+						<div class="col-lg-3 col-sm-6 col-6">
+							<div class="main-button">
+							<a href="about.html">Explore More</a>
+							</div>
+						</div>
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-2">
-						<div class="widget">
-							<h3 class="heading">Resources</h3>
-							<ul class="links list-unstyled">
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4">
-						<div class="widget">
-							<h3 class="heading">Contact</h3>
-							<ul class="list-unstyled quick-info links">
-								<li class="email"><a href="#">mail@example.com</a></li>
-								<li class="phone"><a href="#">+1 222 212 3819</a></li>
-								<li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
-							</ul>
-						</div>
 					</div>
 				</div>
+				</div>
+			</div>
+			</div>
+			<div id="top-banner-2" class="banner">
+			<div class="banner-inner-wrapper header-text">
+				<div class="main-caption">
+				<h2>Take a Glimpse Into The Beautiful Country Of:</h2>
+				<h1>Switzerland</h1>
+				<div class="border-button"><a href="about.html">Go There</a></div>
+				</div>
+				<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+					<div class="more-info">
+						<div class="row">
+						<div class="col-lg-3 col-sm-6 col-6">
+							<i class="fa fa-user"></i>
+							<h4><span>Population:</span><br>8.66 M</h4>
+						</div>
+						<div class="col-lg-3 col-sm-6 col-6">
+							<i class="fa fa-globe"></i>
+							<h4><span>Territory:</span><br>41.290 KM<em>2</em></h4>
+						</div>
+						<div class="col-lg-3 col-sm-6 col-6">
+							<i class="fa fa-home"></i>
+							<h4><span>AVG Price:</span><br>$1.100.200</h4>
+						</div>
+						<div class="col-lg-3 col-sm-6 col-6">
+							<div class="main-button">
+							<a href="about.html">Explore More</a>
+							</div>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			</div>
+			<div id="top-banner-3" class="banner">
+			<div class="banner-inner-wrapper header-text">
+				<div class="main-caption">
+				<h2>Take a Glimpse Into The Beautiful Country Of:</h2>
+				<h1>France</h1>
+				<div class="border-button"><a href="about.html">Go There</a></div>
+				</div>
+				<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+					<div class="more-info">
+						<div class="row">
+						<div class="col-lg-3 col-sm-6 col-6">
+							<i class="fa fa-user"></i>
+							<h4><span>Population:</span><br>67.41 M</h4>
+						</div>
+						<div class="col-lg-3 col-sm-6 col-6">
+							<i class="fa fa-globe"></i>
+							<h4><span>Territory:</span><br>551.500 KM<em>2</em></h4>
+						</div>
+						<div class="col-lg-3 col-sm-6 col-6">
+							<i class="fa fa-home"></i>
+							<h4><span>AVG Price:</span><br>$425.600</h4>
+						</div>
+						<div class="col-lg-3 col-sm-6 col-6">
+							<div class="main-button">
+							<a href="about.html">Explore More</a>
+							</div>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			</div>
+			<div id="top-banner-4" class="banner">
+			<div class="banner-inner-wrapper header-text">
+				<div class="main-caption">
+				<h2>Take a Glimpse Into The Beautiful Country Of:</h2>
+				<h1>Thailand</h1>
+				<div class="border-button"><a href="about.html">Go There</a></div>
+				</div>
+				<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+					<div class="more-info">
+						<div class="row">
+						<div class="col-lg-3 col-sm-6 col-6">
+							<i class="fa fa-user"></i>
+							<h4><span>Population:</span><br>69.86 M</h4>
+						</div>
+						<div class="col-lg-3 col-sm-6 col-6">
+							<i class="fa fa-globe"></i>
+							<h4><span>Territory:</span><br>513.120 KM<em>2</em></h4>
+						</div>
+						<div class="col-lg-3 col-sm-6 col-6">
+							<i class="fa fa-home"></i>
+							<h4><span>AVG Price:</span><br>$165.450</h4>
+						</div>
+						<div class="col-lg-3 col-sm-6 col-6">
+							<div class="main-button">
+							<a href="about.html">Explore More</a>
+							</div>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				</div>
+			</div>
 			</div>
 		</div>
-
-
-
-		<div class="inner dark">
-			<div class="container">
-				<div class="row text-center">
-					<div class="col-md-8 mb-3 mb-md-0 mx-auto">
-						<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co" class="link-highlight">Untree.co</a> <!-- License information: https://untree.co/license/ -->Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a>
-						</p>
+		<nav>
+			<div class="controls">
+			<label for="banner1"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">1</span></label>
+			<label for="banner2"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">2</span></label>
+			<label for="banner3"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">3</span></label>
+			<label for="banner4"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">4</span></label>
+			</div>
+		</nav>
+		</div>
+	</section>
+	<!-- ***** Main Banner Area End ***** -->
+	
+	<div class="visit-country">
+		<div class="container">
+		<div class="row">
+			<div class="col-lg-5">
+			<div class="section-heading">
+				<h2>Visit One Of Our Countries Now</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+			</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-8">
+			<div class="items">
+				<div class="row">
+				<div class="col-lg-12">
+					<div class="item">
+					<div class="row">
+						<div class="col-lg-4 col-sm-5">
+						<div class="image">
+							<img src="../../images/country-01.jpg" alt="">
+						</div>
+						</div>
+						<div class="col-lg-8 col-sm-7">
+						<div class="right-content">
+							<h4>SWITZERLAND</h4>
+							<span>Europe</span>
+							<div class="main-button">
+							<a href="about.html">Explore More</a>
+							</div>
+							<p>Woox Travel is a professional Bootstrap 5 theme HTML CSS layout for your website. You can use this layout for your commercial work.</p>
+							<ul class="info">
+							<li><i class="fa fa-user"></i> 8.66 Mil People</li>
+							<li><i class="fa fa-globe"></i> 41.290 km2</li>
+							<li><i class="fa fa-home"></i> $1.100.200</li>
+							</ul>
+							<div class="text-button">
+							<a href="about.html">Need Directions ? <i class="fa fa-arrow-right"></i></a>
+							</div>
+						</div>
+						</div>
 					</div>
-					
+					</div>
+				</div>
+				<div class="col-lg-12">
+					<div class="item">
+					<div class="row">
+						<div class="col-lg-4 col-sm-5">
+						<div class="image">
+							<img src="../../images/country-02.jpg" alt="">
+						</div>
+						</div>
+						<div class="col-lg-8 col-sm-7">
+						<div class="right-content">
+							<h4>CARIBBEAN</h4>
+							<span>North America</span>
+							<div class="main-button">
+							<a href="about.html">Explore More</a>
+							</div>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+							<ul class="info">
+							<li><i class="fa fa-user"></i> 44.48 Mil People</li>
+							<li><i class="fa fa-globe"></i> 275.400 km2</li>
+							<li><i class="fa fa-home"></i> $946.000</li>
+							</ul>
+							<div class="text-button">
+							<a href="about.html">Need Directions ? <i class="fa fa-arrow-right"></i></a>
+							</div>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				<div class="col-lg-12">
+					<div class="item last-item">
+					<div class="row">
+						<div class="col-lg-4 col-sm-5">
+						<div class="image">
+							<img src="../../images/country-03.jpg" alt="">
+						</div>
+						</div>
+						<div class="col-lg-8 col-sm-7">
+						<div class="right-content">
+							<h4>FRANCE</h4>
+							<span>Europe</span>
+							<div class="main-button">
+							<a href="about.html">Explore More</a>
+							</div>
+							<p>We hope this WoOx template is useful for you, please support us a <a href="https://paypal.me/templatemo" target="_blank">small amount of PayPal</a> to info [at] templatemo.com for our survival. We really appreciate your contribution.</p>
+							<ul class="info">
+							<li><i class="fa fa-user"></i> 67.41 Mil People</li>
+							<li><i class="fa fa-globe"></i> 551.500 km2</li>
+							<li><i class="fa fa-home"></i> $425.600</li>
+							</ul>
+							<div class="text-button">
+							<a href="about.html">Need Directions ? <i class="fa fa-arrow-right"></i></a>
+							</div>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				<div class="col-lg-12">
+					<ul class="page-numbers">
+					<li><a href="#"><i class="fa fa-arrow-left"></i></a></li>
+					<li><a href="#">1</a></li>
+					<li class="active"><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
+					</ul>
+				</div>
 				</div>
 			</div>
+			</div>
+			<div class="col-lg-4">
+			<div class="side-bar-map">
+				<div class="row">
+				<div class="col-lg-12">
+					<div id="map">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12469.776493332698!2d-80.14036379941481!3d25.907788681148624!2m3!1f357.26927939317244!2f20.870722720054623!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x88d9add4b4ac788f%3A0xe77469d09480fcdb!2sSunny%20Isles%20Beach!5e1!3m2!1sen!2sth!4v1642869952544!5m2!1sen!2sth" width="100%" height="550px" frameborder="0" style="border:0; border-radius: 23px; " allowfullscreen=""></iframe>
+					</div>
+				</div>
+				</div>
+			</div>
+			</div>
+		</div>
 		</div>
 	</div>
 
-	<div id="overlayer"></div>
-	<div class="loader">
-		<div class="spinner-border" role="status">
-			<span class="sr-only">Loading...</span>
+	<div class="call-to-action">
+		<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+			<h2>Are You Looking To Travel ?</h2>
+			<h4>Make A Reservation By Clicking The Button</h4>
+			</div>
+			<div class="col-lg-4">
+			<div class="border-button">
+				<a href="reservation.html">Book Yours Now</a>
+			</div>
+			</div>
+		</div>
 		</div>
 	</div>
+
+	<footer>
+		<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+			<p>Copyright © 2036 <a href="#">WoOx Travel</a> Company. All rights reserved. 
+			<br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a> Distribution: <a href="https://themewagon.com target="_blank" >ThemeWagon</a></p>
+			</div>
+		</div>
+		</div>
+	</footer>
 
 	@push('scripts')
-		<script src="../../js/jquery-3.4.1.min.js"></script>
-        <script src="../../js/popper.min.js"></script>
-        <script src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/owl.carousel.min.js"></script>
-        <script src="../../js/jquery.animateNumber.min.js"></script>
-        <script src="../../js/jquery.waypoints.min.js"></script>
-        <script src="../../js/jquery.fancybox.min.js"></script>
-        <script src="../../js/aos.js"></script>
-        <script src="../../js/moment.min.js"></script>
-        <script src="../../js/daterangepicker.js"></script>
-        <script src="../../js/typed.js"></script>
-        <script>
-            $(function() {
-                var slides = $('.slides'),
-                images = slides.find('img');
-
-                images.each(function(i) {
-                    $(this).attr('data-id', i + 1);
-                })
-
-                var typed = new Typed('.typed-words', {
-                    strings: ["San Francisco."," Paris."," New Zealand.", " Maui.", " London."],
-                    typeSpeed: 80,
-                    backSpeed: 80,
-                    backDelay: 4000,
-                    startDelay: 1000,
-                    loop: true,
-                    showCursor: true,
-                    preStringTyped: (arrayPos, self) => {
-                        arrayPos++;
-                        // console.log(arrayPos);
-                        $('.slides img').removeClass('active');
-                        $('.slides img[data-id="'+arrayPos+'"]').addClass('active');
-                    }
-
-                });
-            })
-        </script>
+		<script src="../../vendor/jquery/jquery.min.js"></script>
+        <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../js/isotope.min.js"></script>
+        <script src="../../js/owl-carousel.js"></script>
+        <!-- <script src="../../js/wow.js"></script> -->
+        <script src="../../js/tabs.js"></script>
+        <script src="../../js/popup.js"></script>
         <script src="../../js/custom.js"></script>
+
+        <script>
+			function bannerSwitcher() {
+			next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
+			if (next.length) next.prop('checked', true);
+			else $('.sec-1-input').first().prop('checked', true);
+			}
+
+			var bannerTimer = setInterval(bannerSwitcher, 5000);
+
+			$('nav .controls label').click(function() {
+			clearInterval(bannerTimer);
+			bannerTimer = setInterval(bannerSwitcher, 5000)
+			});
+		</script>
 	@endpush
 </x-app-layout>
