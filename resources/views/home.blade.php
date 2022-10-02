@@ -2,7 +2,7 @@
 
 	@push('links')
 		<!-- Bootstrap core CSS -->
-		<link rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
 
 		<!-- Additional CSS Files -->
 		<link rel="stylesheet" href="../../css/fontawesome.css">
@@ -376,8 +376,8 @@
 	</footer>
 
 	@push('scripts')
-		<script src="../../vendor/jquery/jquery.min.js"></script>
-        <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src="../../jquery/jquery.min.js"></script>
+        <script src="../../bootstrap/js/bootstrap.min.js"></script>
         <script src="../../js/isotope.min.js"></script>
         <script src="../../js/owl-carousel.js"></script>
         <!-- <script src="../../js/wow.js"></script> -->
