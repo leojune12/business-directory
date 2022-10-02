@@ -47,7 +47,24 @@
 					<li><a href="services.html">Services</a></li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="contact.html">Contact Us</a></li>
+					@auth
+					<li class="has-children">
+						<a href="#">{{ Auth::user()->name }}</a>
+						<ul class="dropdown">
+							<li>
+								<form method="POST" action="{{ route('logout') }}" class="tw-flex">
+									@csrf
+									<a class="tw-w-full tw-px-5 py-1" onclick="event.preventDefault(); this.closest('form').submit();">
+										{{ __('Log Out') }}
+									</a>
+								</form>
+							</li>
+						</ul>
+					</li>
+					@endauth
+					@guest
 					<li><a href="/login">Sign In</a></li>
+					@endguest
 				</ul>
 
 				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
@@ -57,7 +74,6 @@
 			</div>
 		</div>
 	</nav>
-
 
 	<div class="hero">
 		<div class="container">
@@ -120,7 +136,6 @@
 			</div>
 		</div>
 	</div>
-
 
 	<div class="untree_co-section">
 		<div class="container">
