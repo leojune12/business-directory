@@ -9,13 +9,22 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <!-- Name -->
+            <!-- First Name -->
             <div>
-                <x-input-label for="name" :value="__('Name')" />
+                <x-input-label for="first_name" :value="__('First Name')" />
 
-                <x-text-input id="name" class="tw-block tw-mt-1 tw-w-full" type="text" name="name" :value="old('name')" required autofocus />
+                <x-text-input id="first_name" class="tw-block tw-mt-1 tw-w-full" type="text" name="first_name" :value="old('first_name')" required autofocus />
 
-                <x-input-error :messages="$errors->get('name')" class="tw-mt-2" />
+                <x-input-error :messages="$errors->get('first_name')" class="tw-mt-2" />
+            </div>
+
+            <!-- Last Name -->
+            <div class="tw-mt-4">
+                <x-input-label for="last_name" :value="__('Last Name')" />
+
+                <x-text-input id="last_name" class="tw-block tw-mt-1 tw-w-full" type="text" name="last_name" :value="old('last_name')" required autofocus />
+
+                <x-input-error :messages="$errors->get('last_name')" class="tw-mt-2" />
             </div>
 
             <!-- Email Address -->
