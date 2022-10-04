@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Modules\Businesses\Entities\Business;
 
 class User extends Authenticatable
 {
@@ -49,5 +50,13 @@ class User extends Authenticatable
     protected static function newFactory()
     {
         return \Modules\Users\Database\factories\UserFactory::new();
+    }
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function businesses()
+    {
+        return $this->hasMany(Business::class);
     }
 }

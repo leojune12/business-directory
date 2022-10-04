@@ -2,7 +2,6 @@
 
 namespace Modules\Users\Database\Seeders;
 
-use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Modules\Users\Entities\User;
@@ -33,6 +32,8 @@ class UsersDatabaseSeeder extends Seeder
 
         $admin->assignRole('Admin');
 
-        User::factory(100)->create();
+        User::factory(100)
+            ->hasBusinesses(2)
+            ->create();
     }
 }
