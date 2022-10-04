@@ -10,8 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::group(['middleware' => ['role:admin']], function () {
-    Route::prefix('users')->group(function() {
-        Route::get('/', 'UsersController@index');
+
+    Route::prefix('roles')->group(function() {
+
+        Route::get('/', 'RolesController@index');
     });
 });
