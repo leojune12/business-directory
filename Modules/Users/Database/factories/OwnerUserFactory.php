@@ -2,12 +2,11 @@
 
 namespace Modules\Users\Database\factories;
 
-use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class UserFactory extends Factory
+class OwnerUserFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
@@ -56,7 +55,6 @@ class UserFactory extends Factory
             //
         })->afterCreating(function (\Modules\Users\Entities\User $user) {
 
-            // $user->assignRole(Arr::random(["owner", "customer"]));
             $user->assignRole("owner");
         });
     }
