@@ -1,5 +1,14 @@
 <x-app-layout>
 
+    @push('links')
+        <link rel="stylesheet" href="../../css/fontawesome.css">
+        <link rel="stylesheet" href="../../css/templatemo-woox-travel.css">
+        <link rel="stylesheet" href="../../css/owl.css">
+        <link rel="stylesheet" href="../../css/animate.css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    @endpush
+
     <!-- ***** Preloader Start ***** -->
 	<div id="js-preloader" class="js-preloader">
 		<div class="preloader-inner">
@@ -365,6 +374,12 @@
 
 	@push('scripts')
 
+        <script src="../../jquery/jquery.min.js"></script>
+        <script src="../../bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../js/isotope.min.js"></script>
+        <script src="../../js/owl-carousel.js"></script>
+        <script src="../../js/tabs.js"></script>
+        <script src="../../js/popup.js"></script>
         <script src="../../js/custom.js"></script>
 
         <script>

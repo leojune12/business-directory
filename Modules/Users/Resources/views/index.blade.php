@@ -1,13 +1,17 @@
+@section('title', isset($module) ? ' | ' . $module : '')
 <x-app-layout>
-    <div id="app">
+    <div id="app" class="py-5" v-cloak>
         <v-app>
             <v-main>
                 <v-container>
+
+                    <h3 class="mb-5">{{ $module }} List</h3>
+
                     <v-data-table
                         v-model="selected"
                         :headers="headers"
                         :loading="loading"
-                        class="elevation-1"
+                        class="elevation-2"
                         :items="pagination.data"
                         :options.sync="options"
                         :server-items-length="pagination.total"
@@ -21,23 +25,25 @@
                                 flat
                             >
                                 <v-btn
-                                    tile
+                                    {{-- tile --}}
                                     color="success"
-                                    small
+                                    {{-- small --}}
+                                    outlined
                                     :href="url + '/create'"
                                 >
                                     <v-icon left>
                                         mdi-plus
                                     </v-icon>
-                                    Create
+                                    Add {{ $module }}
                                 </v-btn>
 
                                 <v-spacer></v-spacer>
 
                                 <v-btn
-                                    tile
+                                    {{-- tile --}}
                                     color="error"
-                                    small
+                                    {{-- small --}}
+                                    outlined
                                     class="tw-mr-1"
                                     @click="confirmDelete(selected)"
                                     :disabled="!selected.length"
@@ -49,9 +55,10 @@
                                 </v-btn>
 
                                 <v-btn
-                                    tile
-                                    color="warning"
-                                    small
+                                    {{-- tile --}}
+                                    color="primary"
+                                    {{-- small --}}
+                                    outlined
                                     @click="filterDialog = true"
                                 >
                                     <v-icon left>
@@ -92,7 +99,7 @@
                                         <v-list-item
                                             dense
                                             ripple
-                                            :href="url + '/' + item.id + '/edit'"
+                                            :href="url + '/' + item.id"
                                             class="hover:tw-bg-gray-200"
                                         >
                                             <v-list-item-icon>
@@ -146,6 +153,9 @@
                     </v-data-table>
                 </v-container>
             </v-main>
+
+            @include('users::index_components.filter_dialog')
+
         </v-app>
     </div>
 

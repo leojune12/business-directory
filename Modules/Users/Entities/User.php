@@ -15,7 +15,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes;
 
-    protected $appends = ['full_name', 'role'];
+    protected $appends = ['full_name', 'role', 'date_added'];
 
     /**
      * The attributes that are mass assignable.
@@ -66,11 +66,16 @@ class User extends Authenticatable
     {
         $first_name = $this->first_name ? $this->first_name . ' ' : '';
         $last_name = $this->last_name ? $this->last_name : '';
-        return $first_name . " " . $last_name;
+        return $first_name . $last_name;
     }
 
     public function getRoleAttribute()
     {
-        return $this->roles[0]->name ? $this->roles[0]->name : '';
+        return $this->roles[0]->name ?? '';
+    }
+
+    public function getDateAddedAttribute()
+    {
+        return $this->created_at ? date_format($this->created_at, 'm-d-Y H:i:s') : '';
     }
 }

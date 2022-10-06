@@ -26,9 +26,14 @@
                         value: 'id',
                     },
                     {
-                        text: 'Name',
+                        text: 'First Name',
                         align: 'start',
-                        value: 'full_name',
+                        value: 'first_name',
+                    },
+                    {
+                        text: 'Last Name',
+                        align: 'start',
+                        value: 'last_name',
                     },
                     {
                         text: 'Email',
@@ -36,11 +41,12 @@
                     },
                     {
                         text: 'Role',
-                        value: 'role'
+                        value: 'role',
+                        sortable: false,
                     },
                     {
                         text: 'Created',
-                        value: 'created_at',
+                        value: 'date_added',
                     },
                     {
                         text: 'Action',
@@ -58,10 +64,12 @@
                 },
                 filterDialog: false,
                 advanceFilters: {
-                    name: null,
-                    code: null,
-                    descriptive_title: null,
+                    first_name: null,
+                    last_name: null,
+                    email: null,
+                    role: null,
                 },
+                roles: {!! $roles ?? [] !!},
             }
         },
 
@@ -77,14 +85,18 @@
         computed: {
             getFilters () {
 
-                const { sortBy, sortDesc, page, itemsPerPage } = this.options
+                let { sortBy, sortDesc, page, itemsPerPage } = this.options
 
-                let orderBy = 'id'
+                // Customise sortBy
+                if (sortBy == 'date_added') {
+
+                    sortBy = 'created_at'
+                }
 
                 let filters = '?'
                 filters += 'page=' + page
                 filters += '&perPage=' + itemsPerPage
-                filters += '&orderBy=' + orderBy
+                filters += '&orderBy=' + sortBy
                 filters += '&orderType=' + (sortDesc[0] ? 'ASC' : 'DESC')
 
                 return filters
@@ -93,9 +105,10 @@
             getAdvanceFilters () {
                 let filters = ''
 
-                filters += '&name=' + this.advanceFilters.name
-                filters += '&code=' + this.advanceFilters.code
-                filters += '&descriptive_title=' + this.advanceFilters.descriptive_title
+                filters += '&first_name=' + this.advanceFilters.first_name
+                filters += '&last_name=' + this.advanceFilters.last_name
+                filters += '&email=' + this.advanceFilters.email
+                filters += '&role=' + this.advanceFilters.role
 
                 return filters
             }
@@ -108,7 +121,6 @@
                 this.loading = true
 
                 await axios.get(this.url + this.getFilters + this.getAdvanceFilters)
-                // await axios.get(this.url)
                     .then(response => {
                         this.pagination = response.data
                         this.options.page = response.data.current_page

@@ -1,0 +1,89 @@
+<v-dialog
+    v-model="filterDialog"
+    persistent
+    max-width="600px"
+>
+    <v-card>
+        <v-card-title>
+            <span class="text-h5">Filter Table</span>
+        </v-card-title>
+        <v-card-text>
+            <v-container>
+                <v-form
+                    ref="advanceFilterForm"
+                >
+                    <v-row>
+                        <v-col
+                            cols="12"
+                            sm="6"
+                        >
+                            <v-text-field
+                                dense
+                                clearable
+                                label="First Name"
+                                v-model="advanceFilters.first_name"
+                            ></v-text-field>
+                        </v-col>
+                        <v-col
+                            cols="12"
+                            sm="6"
+                        >
+                            <v-text-field
+                                dense
+                                clearable
+                                label="Last Name"
+                                v-model="advanceFilters.last_name"
+                            ></v-text-field>
+                        </v-col>
+                        <v-col
+                            cols="12"
+                            sm="6"
+                        >
+                            <v-text-field
+                                dense
+                                clearable
+                                label="Email"
+                                v-model="advanceFilters.email"
+                            ></v-text-field>
+                        </v-col>
+                        <v-col
+                            cols="12"
+                            sm="6"
+                        >
+                            <v-select
+                                dense
+                                v-model="advanceFilters.role"
+                                :items="roles"
+                                label="Role"
+                            ></v-select>
+                        </v-col>
+                    </v-row>
+                </v-form>
+            </v-container>
+        </v-card-text>
+        <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+                color="blue darken-1"
+                text
+                @click="closeFilter()"
+            >
+                Close
+            </v-btn>
+            <v-btn
+                color="blue darken-1"
+                text
+                @click="resetFilter()"
+            >
+                Reset
+            </v-btn>
+            <v-btn
+                color="blue darken-1"
+                text
+                @click="filter()"
+            >
+                Filter
+            </v-btn>
+        </v-card-actions>
+    </v-card>
+</v-dialog>
