@@ -21,16 +21,19 @@ class UsersDatabaseSeeder extends Seeder
 
         app()['cache']->forget('spatie.permission.cache');
 
-        $admin = User::firstOrCreate([
-            "first_name" => "Admin",
-            "last_name" => "Admin",
-            "email" => "admin@test.com",
-            "email_verified_at" => now(),
-            "password" => Hash::make("pw@12345"),
-            "remember_token" => Str::random(10),
-        ]);
+        if (!User::find(1)) {
 
-        $admin->assignRole('Admin');
+            $admin = User::firstOrCreate([
+                "first_name" => "Admin",
+                "last_name" => "Admin",
+                "email" => "admin@test.com",
+                "email_verified_at" => now(),
+                "password" => Hash::make("pw@12345"),
+                "remember_token" => Str::random(10),
+            ]);
+
+            $admin->assignRole('Admin');
+        }
 
         User::factory(100)
             ->hasBusinesses(2)
