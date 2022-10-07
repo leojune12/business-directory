@@ -35,6 +35,8 @@ class UsersController extends Controller
     {
         $query = User::whereNull('deleted_at');
 
+        $query->with('roles');
+
         $this->queryHandler($query, $request);
 
         $query->orderBy($request->orderBy ?? 'id', $request->orderType ?? 'DESC');
