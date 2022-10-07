@@ -35,7 +35,8 @@ class UsersController extends Controller
     {
         $query = User::whereNull('deleted_at');
 
-        $query->with('roles');
+        // Eager Loading
+        $query->with('roles:id,name');
 
         $this->queryHandler($query, $request);
 
@@ -138,12 +139,12 @@ class UsersController extends Controller
 
     public function show($id)
     {
-        $model = User::findOrFail($id);
+        $model = User::findOrFail($id)->load('roles:name');
 
         return view('users::show', [
             'module' => $this->module,
             'method' => 'View',
-            'model' => $model
+            'model' => $model,
         ]);
     }
 
@@ -205,7 +206,7 @@ class UsersController extends Controller
             return response()->json([
                 'status' => 'success',
                 'title' => 'Success!',
-                'message' => 'Item successfully created.'
+                'message' => 'Item successfully updated.'
             ]);
         } catch (Throwable $e) {
 

@@ -6,7 +6,7 @@
                 <v-form>
                     <v-container>
 
-                        <h3 class="mb-5">{{ $method . " " . $module }}</h3>
+                        <h3 class="tw-mb-10">{{ $method . " " . $module }}</h3>
 
                         <v-row>
                             <v-col
@@ -15,9 +15,10 @@
                                 class="tw-py-0"
                             >
                                 <v-text-field
-                                    v-model="formData.first_name"
-                                    label="First name"
-                                    :error-messages="errors?.first_name?.[0]"
+                                    filled
+                                    readonly
+                                    v-model="formData.user.full_name"
+                                    label="Owner"
                                 ></v-text-field>
                             </v-col>
 
@@ -27,9 +28,8 @@
                                 class="tw-py-0"
                             >
                                 <v-text-field
-                                    v-model="formData.last_name"
-                                    label="Last name"
-                                    :error-messages="errors?.last_name?.[0]"
+                                    v-model="formData.name"
+                                    label="Business Name"
                                 ></v-text-field>
                             </v-col>
                         </v-row>
@@ -40,9 +40,8 @@
                                 class="tw-py-0"
                             >
                                 <v-text-field
-                                    v-model="formData.email"
-                                    label="E-mail"
-                                    :error-messages="errors?.email?.[0]"
+                                    v-model="formData.address"
+                                    label="Address"
                                 ></v-text-field>
                             </v-col>
 
@@ -51,31 +50,62 @@
                                 md="4"
                                 class="tw-py-0"
                             >
-                                <v-select
-                                    v-model="formData.role"
-                                    :items="roles"
-                                    label="Role"
-                                    :error-messages="errors?.role?.[0]"
-                                ></v-select>
+                                <v-text-field
+                                    v-model="formData.contact_number"
+                                    label="Contact No."
+                                ></v-text-field>
                             </v-col>
                         </v-row>
-                        {{-- <v-row>
+                        <v-row>
                             <v-col
                                 cols="12"
                                 md="4"
                                 class="tw-py-0"
                             >
                                 <v-text-field
-                                    v-model="formData.password"
-                                    :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-                                    :type="showPassword ? 'text' : 'password'"
-                                    label="{{ $method == 'Update' ? 'New ' : '' }}Password"
-                                    hint="At least 8 characters"
-                                    @click:append="showPassword = !showPassword"
-                                    :error-messages="errors?.password?.[0]"
+                                    v-model="formData.website"
+                                    label="Website"
                                 ></v-text-field>
                             </v-col>
-                        </v-row> --}}
+
+                            <v-col
+                                cols="12"
+                                md="4"
+                                class="tw-py-0"
+                            >
+                                <v-text-field
+                                    v-model="formData.facebook_link"
+                                    label="Facebook Link"
+                                ></v-text-field>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col
+                                cols="12"
+                                md="4"
+                                class="tw-py-0"
+                            >
+                                <v-textarea
+                                    v-model="formData.map_location"
+                                    label="Map Location"
+                                    auto-grow
+                                    rows="1"
+                                ></v-textarea>
+                            </v-col>
+
+                            <v-col
+                                cols="12"
+                                md="4"
+                                class="tw-py-0"
+                            >
+                                <v-textarea
+                                    v-model="formData.description"
+                                    label="Description"
+                                    auto-grow
+                                    rows="1"
+                                ></v-textarea>
+                            </v-col>
+                        </v-row>
                         <v-row>
                             <v-col
                                 cols="12"
@@ -104,6 +134,6 @@
         </v-app>
     </div>
 
-    @include('users::form_components.assets')
+    @include('businesses::form_components.assets')
 
 </x-app-layout>

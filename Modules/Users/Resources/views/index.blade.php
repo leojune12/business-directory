@@ -1,4 +1,3 @@
-@section('title', isset($module) ? ' | ' . $module : '')
 <x-app-layout>
     <div id="app" class="py-5" v-cloak>
         <v-app>
@@ -68,12 +67,6 @@
                                 </v-btn>
 
                             </v-toolbar>
-                        </template>
-
-                        <template v-slot:item.role="{ item }">
-                            <span class="text-capitalize">
-                                @{{ item.role }}
-                            </span>
                         </template>
 
                         <template v-slot:item.actions="{ item }">
