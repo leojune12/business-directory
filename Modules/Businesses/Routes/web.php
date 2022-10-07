@@ -11,9 +11,5 @@
 |
 */
 Route::group(['middleware' => ['role:admin']], function () {
-
-    Route::prefix('businesses')->group(function() {
-
-        Route::get('/', 'BusinessesController@index');
-    });
+    Route::resource('businesses', BusinessesController::class);
 });

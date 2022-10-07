@@ -15,7 +15,7 @@
 
         data() {
             return {
-                url: '/users',
+                url: '/businesses',
                 loading: true,
                 options: {},
                 headers: [
@@ -25,27 +25,23 @@
                         value: 'id',
                     },
                     {
-                        text: 'First Name',
+                        text: 'Name',
                         align: 'start',
-                        value: 'first_name',
+                        value: 'name',
                     },
                     {
-                        text: 'Last Name',
+                        text: 'Owner',
                         align: 'start',
-                        value: 'last_name',
+                        value: 'user_name',
                     },
                     {
-                        text: 'Email',
-                        value: 'email'
+                        text: 'Address',
+                        align: 'start',
+                        value: 'address',
                     },
                     {
-                        text: 'Role',
-                        value: 'roles[0].name',
-                        sortable: false,
-                    },
-                    {
-                        text: 'Created',
-                        value: 'date_added',
+                        text: 'Contact No.',
+                        value: 'contact_number'
                     },
                     {
                         text: 'Action',
@@ -63,12 +59,10 @@
                 },
                 filterDialog: false,
                 advanceFilters: {
-                    first_name: null,
-                    last_name: null,
-                    email: null,
-                    role: null,
+                    name: null,
+                    address: null,
+                    contact_number: null,
                 },
-                roles: {!! $roles ?? [] !!},
             }
         },
 
@@ -198,7 +192,7 @@
             resetFilter() {
                 this.$refs.advanceFilterForm.reset()
             },
-        },
+        }
     })
     </script>
 @endpush

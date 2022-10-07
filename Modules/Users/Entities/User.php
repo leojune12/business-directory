@@ -10,12 +10,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Modules\Businesses\Entities\Business;
+use Spatie\Permission\Models\Role;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes;
 
-    protected $appends = ['full_name', 'role', 'date_added'];
+    protected $appends = [
+        'full_name',
+        // 'role',
+        'date_added'
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -69,10 +74,10 @@ class User extends Authenticatable
         return $first_name . $last_name;
     }
 
-    public function getRoleAttribute()
-    {
-        return $this->roles[0]->name ?? '';
-    }
+    // public function getRoleAttribute()
+    // {
+    //     return $this->roles[0]->name ?? '';
+    // }
 
     public function getDateAddedAttribute()
     {

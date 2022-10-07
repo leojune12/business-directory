@@ -11,7 +11,13 @@ class Business extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $appends = [
+        'user_name'
+    ];
+
     protected $fillable = [];
+
+    // protected $guarded = [];
 
     protected static function newFactory()
     {
@@ -24,5 +30,10 @@ class Business extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getUserNameAttribute()
+    {
+        return $this->user ? $this->user->last_name . ', ' . $this->user->first_name : '';
     }
 }
