@@ -1,0 +1,15 @@
+[v-cloak] {
+    display: none;
+}
+
+#app {
+
+    .v-input {
+
+        input, textarea {
+
+            box-shadow: none;
+            background: transparent;
+        }
+    }
+}

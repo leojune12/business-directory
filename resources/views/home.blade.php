@@ -1,16 +1,13 @@
 <x-app-layout>
 
-	@push('links')
-		<!-- Bootstrap core CSS -->
-		<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
-
-		<!-- Additional CSS Files -->
-		<link rel="stylesheet" href="../../css/fontawesome.css">
+    @push('links')
+        <link rel="stylesheet" href="../../css/fontawesome.css">
         <link rel="stylesheet" href="../../css/templatemo-woox-travel.css">
         <link rel="stylesheet" href="../../css/owl.css">
         <link rel="stylesheet" href="../../css/animate.css">
         <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
-	@endpush
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    @endpush
 
     <!-- ***** Preloader Start ***** -->
 	<div id="js-preloader" class="js-preloader">
@@ -43,7 +40,7 @@
 							<li><a href="deals.html">Deals</a></li>
 							<li><a href="reservation.html">Reservation</a></li>
 							<li><a href="reservation.html">Book Yours</a></li>
-						</ul>   
+						</ul>
 						<a class='menu-trigger'>
 							<span>Menu</span>
 						</a>
@@ -219,7 +216,7 @@
 		</div>
 	</section>
 	<!-- ***** Main Banner Area End ***** -->
-	
+
 	<div class="visit-country">
 		<div class="container">
 		<div class="row">
@@ -368,7 +365,7 @@
 		<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-			<p>Copyright © 2036 <a href="#">WoOx Travel</a> Company. All rights reserved. 
+			<p>Copyright © 2036 <a href="#">WoOx Travel</a> Company. All rights reserved.
 			<br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a> Distribution: <a href="https://themewagon.com target="_blank" >ThemeWagon</a></p>
 			</div>
 		</div>
@@ -376,11 +373,11 @@
 	</footer>
 
 	@push('scripts')
-		<script src="../../jquery/jquery.min.js"></script>
+
+        <script src="../../jquery/jquery.min.js"></script>
         <script src="../../bootstrap/js/bootstrap.min.js"></script>
         <script src="../../js/isotope.min.js"></script>
         <script src="../../js/owl-carousel.js"></script>
-        <!-- <script src="../../js/wow.js"></script> -->
         <script src="../../js/tabs.js"></script>
         <script src="../../js/popup.js"></script>
         <script src="../../js/custom.js"></script>
