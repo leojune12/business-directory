@@ -14,47 +14,17 @@
             vuetify: new Vuetify(),
             data () {
                 return {
-                    url: '/businesses',
+                    url: '/categories',
                     errors: null,
                     formData: {
                         ...@json($model ?? []),
-                        model_categories: {!! $model_categories !!},
                     },
-                    categories: {!! $categories !!},
-                    categoryErrorMessage: "",
                 }
-            },
-
-            watch: {
-                'formData.model_categories': {
-                    handler () {
-                        if (this.formData.model_categories.length > 3) {
-
-                            this.categoryErrorMessage = "Only 3 categories allowed"
-                        } else {
-
-                            this.categoryErrorMessage = ""
-                        }
-                    },
-                    deep: true,
-                },
             },
 
             methods: {
 
                 async submit() {
-
-                    if (this.formData.model_categories.length > 3) {
-
-                        Swal.fire({
-                            title: "Whoops!",
-                            text: "Please complete the form.",
-                            icon: 'error',
-                            confirmButtonColor: '#d33',
-                        })
-
-                        return false;
-                    }
 
                     await axios.{{ isset($model->id) ? 'put' : 'post' }}(this.url + '{{ isset($model->id) ? "/" . $model->id : '' }}', this.formData)
                         .then((response) => {

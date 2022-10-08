@@ -57,7 +57,7 @@ class UserFactory extends Factory
         })->afterCreating(function (\Modules\Users\Entities\User $user) {
 
             // $user->assignRole(Arr::random(["owner", "customer"]));
-            $user->assignRole("owner");
+            // $user->assignRole("owner");
         });
     }
 }

@@ -13,6 +13,27 @@
                                 cols="12"
                                 md="8"
                             >
+                                <v-row class="mb-4">
+                                    <v-col
+                                        cols="12"
+                                        md="6"
+                                        class="tw-py-0"
+                                    >
+                                        <h6>
+                                            Category
+                                        </h6>
+                                        <div>
+                                            <v-chip
+                                                class="mr-2 mb-2"
+                                                color="primary"
+                                                outlined
+                                                v-for="category in formData.categories"
+                                            >
+                                                @{{ category.name }}
+                                            </v-chip>
+                                        </div>
+                                    </v-col>
+                                </v-row>
                                 <v-row>
                                     <v-col
                                         cols="12"

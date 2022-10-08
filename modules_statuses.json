@@ -1,5 +1,6 @@
 {
     "Users": true,
     "Roles": true,
-    "Businesses": true
+    "Businesses": true,
+    "Categories": true
 }
