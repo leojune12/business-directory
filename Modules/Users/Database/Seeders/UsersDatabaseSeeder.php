@@ -7,6 +7,9 @@ use Illuminate\Database\Seeder;
 use Modules\Users\Entities\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
+use Modules\Businesses\Entities\Business;
+use Modules\Categories\Entities\Category;
 
 class UsersDatabaseSeeder extends Seeder
 {
@@ -35,8 +38,22 @@ class UsersDatabaseSeeder extends Seeder
             $admin->assignRole('Admin');
         }
 
-        User::factory(100)
-            ->hasBusinesses(2)
-            ->create();
+        $categories = Category::factory(10)->create();
+
+        User::factory(50)->create()->each(function($user) use($categories) {
+
+            $role = Arr::random(["owner", "customer"]);
+
+            $user->assignRole($role);
+
+            if ($role == "owner") {
+
+                Business::factory(2)->create([
+                    'user_id' => $user->id
+                ])->each(function($business) use($categories) {
+                    $business->categories()->attach($categories->random(2));
+                });
+            }
+        });
     }
 }

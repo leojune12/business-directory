@@ -8,6 +8,41 @@
 
                         <h3 class="tw-mb-10">{{ $method . " " . $module }}</h3>
 
+                        <v-row class="mb-4">
+                            <v-col
+                                cols="12"
+                                md="4"
+                                class="tw-py-0"
+                            >
+                                {{-- <h6>
+                                    Category
+                                </h6>
+                                <div>
+                                    <v-chip
+                                        class="mr-2 mb-2"
+                                        color="primary"
+                                        outlined
+                                        v-for="category in formData.categories"
+                                    >
+                                        @{{ category.name }}
+                                    </v-chip>
+                                </div> --}}
+                                <v-autocomplete
+                                    v-model="formData.model_categories"
+                                    :items="categories"
+                                    chips
+                                    color="blue-grey lighten-2"
+                                    label="Category"
+                                    item-text="name"
+                                    item-value="id"
+                                    multiple
+                                    disable-lookup
+                                    deletable-chips
+                                    :error-messages="categoryErrorMessage"
+                                >
+                                </v-autocomplete>
+                            </v-col>
+                        </v-row>
                         <v-row>
                             <v-col
                                 cols="12"
