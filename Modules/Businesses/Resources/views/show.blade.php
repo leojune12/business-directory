@@ -24,7 +24,7 @@
                                         </h6>
                                         <div>
                                             <v-chip
-                                                class="mr-2 mb-2"
+                                                class="mr-1 mb-1"
                                                 color="primary"
                                                 outlined
                                                 v-for="category in formData.categories"

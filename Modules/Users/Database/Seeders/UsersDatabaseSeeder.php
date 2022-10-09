@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Modules\Businesses\Entities\Business;
 use Modules\Categories\Entities\Category;
+use Modules\Product\Entities\Product;
 
 class UsersDatabaseSeeder extends Seeder
 {
@@ -48,10 +49,16 @@ class UsersDatabaseSeeder extends Seeder
 
             if ($role == "owner") {
 
+                // Create Business
                 Business::factory(2)->create([
                     'user_id' => $user->id
                 ])->each(function($business) use($categories) {
+                    // Add Category
                     $business->categories()->attach($categories->random(2));
+                    // Add Product
+                    Product::factory(3)->create([
+                        'business_id' => $business->id
+                    ]);
                 });
             }
         });

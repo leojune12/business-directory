@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Categories\Entities\Category;
+use Modules\Product\Entities\Product;
 use Modules\Users\Entities\User;
 
 class Business extends Model
@@ -49,5 +50,10 @@ class Business extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'business_categories');
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 }
