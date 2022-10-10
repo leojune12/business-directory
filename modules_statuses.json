@@ -3,5 +3,6 @@
     "Roles": true,
     "Businesses": true,
     "Categories": true,
-    "Product": true
+    "Product": true,
+    "Service": true
 }
