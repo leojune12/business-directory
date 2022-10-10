@@ -11,6 +11,7 @@ use Illuminate\Support\Arr;
 use Modules\Businesses\Entities\Business;
 use Modules\Categories\Entities\Category;
 use Modules\Product\Entities\Product;
+use Modules\Service\Entities\Service;
 
 class UsersDatabaseSeeder extends Seeder
 {
@@ -57,6 +58,10 @@ class UsersDatabaseSeeder extends Seeder
                     $business->categories()->attach($categories->random(2));
                     // Add Product
                     Product::factory(3)->create([
+                        'business_id' => $business->id
+                    ]);
+                    // Add Service
+                    Service::factory(3)->create([
                         'business_id' => $business->id
                     ]);
                 });
