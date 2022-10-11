@@ -14,65 +14,17 @@
             vuetify: new Vuetify(),
             data () {
                 return {
-                    url: '/businesses',
+                    url: '/address',
                     errors: null,
                     formData: {
                         ...@json($model ?? []),
-                        model_categories: {!! $model_categories !!},
                     },
-                    categories: {!! $categories !!},
-                    categoryErrorMessage: "",
-                    cities: {!! $cities ?? [] !!},
-                    barangays: [1],
-                    region: "{!! $region !!}",
-                    province: "{!! $province !!}",
                 }
-            },
-
-            watch: {
-                'formData.model_categories': {
-                    handler () {
-                        if (this.formData.model_categories.length > 3) {
-
-                            this.categoryErrorMessage = "Only 3 categories allowed"
-                        } else {
-
-                            this.categoryErrorMessage = ""
-                        }
-                    },
-                    deep: true,
-                },
-
-                'formData.city_id': {
-                    handler () {
-
-                        this.getBarangays(this.formData.city_id)
-                        this.formData.barangay_id = null
-                    },
-                    deep: true,
-                },
-            },
-
-            mounted() {
-
-                this.getBarangays(this.formData.city_id)
             },
 
             methods: {
 
                 async submit() {
-
-                    if (this.formData.model_categories.length > 3) {
-
-                        Swal.fire({
-                            title: "Whoops!",
-                            text: "Please complete the form.",
-                            icon: 'error',
-                            confirmButtonColor: '#d33',
-                        })
-
-                        return false;
-                    }
 
                     await axios.{{ isset($model->id) ? 'put' : 'post' }}(this.url + '{{ isset($model->id) ? "/" . $model->id : '' }}', this.formData)
                         .then((response) => {
@@ -104,18 +56,6 @@
                         }
                     )
                 },
-
-                async getBarangays(city_id) {
-
-                    this.barangays = []
-
-                    await axios.get('/get-address?q=barangay&parent_id=' + city_id)
-                        .then((response) => {
-
-                            this.barangays = response.data.barangays
-                        }
-                    )
-                }
             },
         })
     </script>
