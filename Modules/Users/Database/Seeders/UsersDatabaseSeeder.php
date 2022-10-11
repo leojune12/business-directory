@@ -52,7 +52,7 @@ class UsersDatabaseSeeder extends Seeder
 
                 // Create Business
                 Business::factory(2)->create([
-                    'user_id' => $user->id
+                    'user_id' => $user->id,
                 ])->each(function($business) use($categories) {
                     // Add Category
                     $business->categories()->attach($categories->random(2));

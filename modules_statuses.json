@@ -4,5 +4,6 @@
     "Businesses": true,
     "Categories": true,
     "Product": true,
-    "Service": true
+    "Service": true,
+    "Address": true
 }

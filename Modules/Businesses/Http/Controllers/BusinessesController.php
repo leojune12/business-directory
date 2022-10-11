@@ -6,6 +6,7 @@ use Throwable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Modules\Address\Entities\City;
 use Illuminate\Support\Facades\Validator;
 use Modules\Businesses\Entities\Business;
 use Modules\Categories\Entities\Category;
@@ -32,7 +33,7 @@ class BusinessesController extends Controller
         $query = Business::whereNull('deleted_at');
 
         // Eager Loading
-        $query->with('user:id,first_name,last_name');
+        $query->with('user:id,first_name,last_name', 'province', 'city', 'barangay');
 
         $this->queryHandler($query, $request);
 
@@ -82,7 +83,8 @@ class BusinessesController extends Controller
 
     public function show($id)
     {
-        $model = Business::findOrFail($id)->load('categories');
+        $model = Business::findOrFail($id)->load('categories', 'region', 'province', 'city', 'barangay');
+
 
         return view('businesses::show', [
             'module' => $this->module,
@@ -93,11 +95,17 @@ class BusinessesController extends Controller
 
     public function edit($id)
     {
-        $model = Business::findOrFail($id)->load('categories');
+        $model = Business::findOrFail($id);
 
         $model_categories = $model->categories->pluck('id');
 
         $categories = Category::all();
+
+        // Capiz Cities and Municipalities
+        $cities = City::where('provCode', 619)->get();
+
+        $region = $model->region->regDesc ?? null;
+        $province = $model->province->provDesc ?? null;
 
         return view('businesses::form', [
             'module' => $this->module,
@@ -105,6 +113,9 @@ class BusinessesController extends Controller
             'model' => $model,
             'categories' => $categories,
             'model_categories' => $model_categories,
+            'cities' => $cities,
+            'region' => $region,
+            'province' => $province,
         ]);
     }
 
@@ -120,6 +131,9 @@ class BusinessesController extends Controller
             'facebook_link' => 'required',
             'map_location' => 'required',
             'description' => 'required',
+            'street' => 'nullable',
+            'city_id' => 'required',
+            'barangay_id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -144,6 +158,9 @@ class BusinessesController extends Controller
                 'facebook_link',
                 'map_location',
                 'description',
+                'street',
+                'city_id',
+                'barangay_id',
             ]));
 
             foreach ($model->categories as $category) {

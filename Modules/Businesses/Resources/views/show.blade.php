@@ -13,15 +13,24 @@
                                 cols="12"
                                 md="8"
                             >
+                                <v-row>
+                                    <v-col
+                                        cols="12"
+                                    >
+                                        <h5>
+                                            General Information
+                                        </h5>
+                                    </v-col>
+                                </v-row>
                                 <v-row class="mb-4">
                                     <v-col
                                         cols="12"
                                         md="6"
                                         class="tw-py-0"
                                     >
-                                        <h6>
+                                        <div class="body-2 mb-1">
                                             Category
-                                        </h6>
+                                        </div>
                                         <div>
                                             <v-chip
                                                 class="mr-1 mb-1"
@@ -33,8 +42,7 @@
                                             </v-chip>
                                         </div>
                                     </v-col>
-                                </v-row>
-                                <v-row>
+
                                     <v-col
                                         cols="12"
                                         md="6"
@@ -47,7 +55,8 @@
                                             readonly
                                         ></v-text-field>
                                     </v-col>
-
+                                </v-row>
+                                <v-row>
                                     <v-col
                                         cols="12"
                                         md="6"
@@ -60,7 +69,44 @@
                                             readonly
                                         ></v-text-field>
                                     </v-col>
+
+                                    <v-col
+                                        cols="12"
+                                        md="6"
+                                        class="tw-py-0"
+                                    >
+                                        <v-textarea
+                                            filled
+                                            v-model="formData.description"
+                                            label="Description"
+                                            readonly
+                                            auto-grow
+                                            rows="1"
+                                        ></v-textarea>
+                                    </v-col>
                                 </v-row>
+
+                                {{-- Divider --}}
+                                <v-row>
+                                    <v-col
+                                        cols="12"
+                                    >
+                                        <v-divider
+                                            color="black"
+                                        ></v-divider>
+                                    </v-col>
+                                </v-row>
+
+                                <v-row>
+                                    <v-col
+                                        cols="12"
+                                    >
+                                        <h5>
+                                            Address Information
+                                        </h5>
+                                    </v-col>
+                                </v-row>
+
                                 <v-row>
                                     <v-col
                                         cols="12"
@@ -69,12 +115,90 @@
                                     >
                                         <v-text-field
                                             filled
-                                            v-model="formData.address"
-                                            label="Address"
+                                            v-model="formData.region.regDesc"
+                                            label="Region"
                                             readonly
                                         ></v-text-field>
                                     </v-col>
+                                    <v-col
+                                        cols="12"
+                                        md="6"
+                                        class="tw-py-0"
+                                    >
+                                        <v-text-field
+                                            filled
+                                            v-model="formData.province.provDesc"
+                                            label="Province"
+                                            readonly
+                                        ></v-text-field>
+                                    </v-col>
+                                </v-row>
 
+                                <v-row>
+                                    <v-col
+                                        cols="12"
+                                        md="6"
+                                        class="tw-py-0"
+                                    >
+                                        <v-text-field
+                                            filled
+                                            v-model="formData.city.citymunDesc"
+                                            label="City / Municipality"
+                                            readonly
+                                        ></v-text-field>
+                                    </v-col>
+                                    <v-col
+                                        cols="12"
+                                        md="6"
+                                        class="tw-py-0"
+                                    >
+                                        <v-text-field
+                                            filled
+                                            v-model="formData.barangay.brgyDesc"
+                                            label="Barangay"
+                                            readonly
+                                        ></v-text-field>
+                                    </v-col>
+                                </v-row>
+
+                                <v-row>
+                                    <v-col
+                                        cols="12"
+                                        md="6"
+                                        class="tw-py-0"
+                                    >
+                                        <v-text-field
+                                            filled
+                                            v-model="formData.street"
+                                            label="Street"
+                                            readonly
+                                        ></v-text-field>
+                                    </v-col>
+                                </v-row>
+
+                                {{-- Divider --}}
+                                <v-row>
+                                    <v-col
+                                        cols="12"
+                                    >
+                                        <v-divider
+                                            color="black"
+                                        ></v-divider>
+                                    </v-col>
+                                </v-row>
+
+                                <v-row>
+                                    <v-col
+                                        cols="12"
+                                        md="8"
+                                    >
+                                        <h5>
+                                            Contact Information
+                                        </h5>
+                                    </v-col>
+                                </v-row>
+
+                                <v-row>
                                     <v-col
                                         cols="12"
                                         md="6"
@@ -84,20 +208,6 @@
                                             filled
                                             v-model="formData.contact_number"
                                             label="Contact No."
-                                            readonly
-                                        ></v-text-field>
-                                    </v-col>
-                                </v-row>
-                                <v-row>
-                                    <v-col
-                                        cols="12"
-                                        md="6"
-                                        class="tw-py-0"
-                                    >
-                                        <v-text-field
-                                            filled
-                                            v-model="formData.website"
-                                            label="Website"
                                             readonly
                                         ></v-text-field>
                                     </v-col>
@@ -121,6 +231,19 @@
                                         md="6"
                                         class="tw-py-0"
                                     >
+                                        <v-text-field
+                                            filled
+                                            v-model="formData.website"
+                                            label="Website"
+                                            readonly
+                                        ></v-text-field>
+                                    </v-col>
+
+                                    <v-col
+                                        cols="12"
+                                        md="6"
+                                        class="tw-py-0"
+                                    >
                                         <v-textarea
                                             filled
                                             v-model="formData.map_location"
@@ -131,20 +254,7 @@
                                         ></v-textarea>
                                     </v-col>
 
-                                    <v-col
-                                        cols="12"
-                                        md="6"
-                                        class="tw-py-0"
-                                    >
-                                        <v-textarea
-                                            filled
-                                            v-model="formData.description"
-                                            label="Description"
-                                            readonly
-                                            auto-grow
-                                            rows="1"
-                                        ></v-textarea>
-                                    </v-col>
+
                                 </v-row>
                                 <v-row>
                                     <v-col

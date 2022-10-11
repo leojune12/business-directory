@@ -5,6 +5,10 @@ namespace Modules\Businesses\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Address\Entities\Barangay;
+use Modules\Address\Entities\City;
+use Modules\Address\Entities\Province;
+use Modules\Address\Entities\Region;
 use Modules\Categories\Entities\Category;
 use Modules\Product\Entities\Product;
 use Modules\Service\Entities\Service;
@@ -15,17 +19,24 @@ class Business extends Model
     use HasFactory, SoftDeletes;
 
     protected $appends = [
-        'user_name'
+        'user_name',
+        'address',
     ];
 
     protected $fillable = [
         'name',
-        'address',
         'contact_number',
         'website',
         'facebook_link',
         'map_location',
         'description',
+
+        // Address
+        'street',
+        'region_id',
+        'province_id',
+        'city_id',
+        'barangay_id',
     ];
 
     // protected $guarded = [];
@@ -61,5 +72,35 @@ class Business extends Model
     public function services()
     {
         return $this->hasMany(Service::class);
+    }
+
+    public function region()
+    {
+        return $this->hasOne(Region::class, 'regCode', 'region_id');
+    }
+
+    public function province()
+    {
+        return $this->hasOne(Province::class, 'provCode', 'province_id');
+    }
+
+    public function city()
+    {
+        return $this->hasOne(City::class, 'citymunCode', 'city_id');
+    }
+
+    public function barangay()
+    {
+        return $this->hasOne(Barangay::class, 'brgyCode', 'barangay_id');
+    }
+
+    public function getAddressAttribute()
+    {
+        $street = $this->street ? $this->street . ', ' : '';
+        $barangay = $this->barangay->brgyDesc ? $this->barangay->brgyDesc . ', ' : '';
+        $city = $this->city->citymunDesc ? $this->city->citymunDesc . ', ' : '';
+        $province = $this->province->provDesc ? $this->province->provDesc : '';
+
+        return $street . $barangay . $city. $province;
     }
 }
