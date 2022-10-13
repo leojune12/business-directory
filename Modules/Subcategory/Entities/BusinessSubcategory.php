@@ -1,21 +1,21 @@
 <?php
 
-namespace $NAMESPACE$;
+namespace Modules\Subcategory\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class $CLASS$ extends Model
+class BusinessSubcategory extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = $FILLABLE$;
+    protected $fillable = [];
 
-    // protected $guarded = [];
+    protected $guarded = [];
 
     // protected static function newFactory()
     // {
-    //     return \$MODULE_NAMESPACE$\$MODULE$\Database\factories\$NAME$Factory::new();
+    //     return \Modules\Subcategory\Database\factories\BusinessSubcategoryFactory::new();
     // }
 }

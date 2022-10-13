@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        // Schema::create('business_categories', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->foreignId('business_id');
-        //     $table->foreignId('category_id');
+        Schema::create('subcategories', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('category_id');
+            $table->string('name');
 
-        //     $table->timestamps();
-        // });
+            $table->timestamps();
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('business_category');
+        Schema::dropIfExists('subcategories');
     }
 };

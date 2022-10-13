@@ -17,26 +17,18 @@
                                 </h5>
                             </v-col>
                         </v-row>
+
                         <v-row class="mb-4">
                             <v-col
                                 cols="12"
                                 md="4"
                                 class="tw-py-0"
                             >
-                                <v-autocomplete
-                                    v-model="formData.model_categories"
-                                    :items="categories"
-                                    chips
-                                    color="blue-grey lighten-2"
-                                    label="Category"
-                                    item-text="name"
-                                    item-value="id"
-                                    multiple
-                                    disable-lookup
-                                    deletable-chips
-                                    :error-messages="categoryErrorMessage"
-                                >
-                                </v-autocomplete>
+                                <v-text-field
+                                    v-model="formData.name"
+                                    label="Business Name"
+                                    :error-messages="errors?.name?.[0]"
+                                ></v-text-field>
                             </v-col>
 
                             <v-col
@@ -52,19 +44,44 @@
                                 ></v-text-field>
                             </v-col>
                         </v-row>
-                        <v-row>
+
+                        <v-row class="mb-4">
                             <v-col
                                 cols="12"
                                 md="4"
                                 class="tw-py-0"
                             >
-                                <v-text-field
-                                    v-model="formData.name"
-                                    label="Business Name"
-                                    :error-messages="errors?.name?.[0]"
-                                ></v-text-field>
+                                <v-autocomplete
+                                    v-model="formData.category_id"
+                                    :items="categories"
+                                    color="blue-grey lighten-2"
+                                    label="Category"
+                                    item-text="name"
+                                    item-value="id"
+                                >
+                                </v-autocomplete>
                             </v-col>
 
+                            <v-col
+                                cols="12"
+                                md="4"
+                                class="tw-py-0"
+                            >
+                                <v-autocomplete
+                                    v-model="formData.model_subcategories"
+                                    :items="subcategories"
+                                    color="blue-grey lighten-2"
+                                    label="Subcategory"
+                                    item-text="name"
+                                    item-value="id"
+                                    multiple
+                                    :error-messages="subcategoryError"
+                                >
+                                </v-autocomplete>
+                            </v-col>
+                        </v-row>
+
+                        <v-row>
                             <v-col
                                 cols="12"
                                 md="4"

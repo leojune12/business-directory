@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Modules\Categories\Database\Seeders\CategoriesDatabaseSeeder;
 use Modules\Roles\Database\Seeders\RolesDatabaseSeeder;
+use Modules\Subcategory\Database\Seeders\SubcategoryDatabaseSeeder;
 use Modules\Users\Database\Seeders\UsersDatabaseSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,8 +20,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RolesDatabaseSeeder::class,
-            UsersDatabaseSeeder::class,
             CategoriesDatabaseSeeder::class,
+            SubcategoryDatabaseSeeder::class,
+            UsersDatabaseSeeder::class,
         ]);
     }
 }

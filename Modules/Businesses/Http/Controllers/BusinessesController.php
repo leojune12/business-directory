@@ -12,6 +12,7 @@ use Modules\Businesses\Entities\Business;
 use Modules\Categories\Entities\Category;
 use Illuminate\Contracts\Support\Renderable;
 use Modules\Categories\Entities\BusinessCategory;
+use Modules\Subcategory\Entities\BusinessSubcategory;
 
 class BusinessesController extends Controller
 {
@@ -33,7 +34,7 @@ class BusinessesController extends Controller
         $query = Business::whereNull('deleted_at');
 
         // Eager Loading
-        $query->with('user:id,first_name,last_name', 'province', 'city', 'barangay');
+        $query->with('user:id,first_name,last_name', 'category', 'province', 'city', 'barangay');
 
         $this->queryHandler($query, $request);
 
@@ -52,9 +53,9 @@ class BusinessesController extends Controller
             return $query->where('address', 'like', '%' . $request->address . '%');
         });
 
-        $query->when($request->contact_number != 'null', function ($query) use ($request) {
-            return $query->where('contact_number', 'like', '%' . $request->contact_number . '%');
-        });
+        // $query->when($request->contact_number != 'null', function ($query) use ($request) {
+        //     return $query->where('contact_number', 'like', '%' . $request->contact_number . '%');
+        // });
 
         // $query->when($request->role != 'null', function ($query) use ($request) {
         //     return $query->role($request->role);
@@ -83,8 +84,7 @@ class BusinessesController extends Controller
 
     public function show($id)
     {
-        $model = Business::findOrFail($id)->load('categories', 'region', 'province', 'city', 'barangay');
-
+        $model = Business::findOrFail($id)->load('category', 'subcategories', 'region', 'province', 'city', 'barangay');
 
         return view('businesses::show', [
             'module' => $this->module,
@@ -97,7 +97,8 @@ class BusinessesController extends Controller
     {
         $model = Business::findOrFail($id);
 
-        $model_categories = $model->categories->pluck('id');
+        // $model_categories = $model->categories->pluck('id');
+        $model_subcategories = $model->subcategories->pluck('id');
 
         $categories = Category::all();
 
@@ -112,7 +113,7 @@ class BusinessesController extends Controller
             'method' => 'Update',
             'model' => $model,
             'categories' => $categories,
-            'model_categories' => $model_categories,
+            'model_subcategories' => $model_subcategories,
             'cities' => $cities,
             'region' => $region,
             'province' => $province,
@@ -131,6 +132,8 @@ class BusinessesController extends Controller
             'facebook_link' => 'required',
             'map_location' => 'required',
             'description' => 'required',
+            'category_id' => 'required',
+            'model_subcategories' => 'nullable',
             'street' => 'nullable',
             'city_id' => 'required',
             'barangay_id' => 'required',
@@ -158,23 +161,13 @@ class BusinessesController extends Controller
                 'facebook_link',
                 'map_location',
                 'description',
+                'category_id',
                 'street',
                 'city_id',
                 'barangay_id',
             ]));
 
-            foreach ($model->categories as $category) {
-
-                BusinessCategory::where('business_id', $model->id)->where('category_id', $category->id)->delete();
-            }
-
-            foreach ($request->model_categories as $category) {
-
-                BusinessCategory::create([
-                    'business_id' => $model->id,
-                    'category_id' => $category,
-                ]);
-            }
+            $model->subcategories()->sync($request->model_subcategories);
 
             DB::commit();
 

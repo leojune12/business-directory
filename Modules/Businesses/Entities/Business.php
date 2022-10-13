@@ -2,17 +2,18 @@
 
 namespace Modules\Businesses\Entities;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\Address\Entities\Barangay;
+use Modules\Users\Entities\User;
 use Modules\Address\Entities\City;
-use Modules\Address\Entities\Province;
 use Modules\Address\Entities\Region;
-use Modules\Categories\Entities\Category;
 use Modules\Product\Entities\Product;
 use Modules\Service\Entities\Service;
-use Modules\Users\Entities\User;
+use Modules\Address\Entities\Barangay;
+use Modules\Address\Entities\Province;
+use Illuminate\Database\Eloquent\Model;
+use Modules\Categories\Entities\Category;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Subcategory\Entities\Subcategory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Business extends Model
 {
@@ -30,6 +31,7 @@ class Business extends Model
         'facebook_link',
         'map_location',
         'description',
+        'category_id',
 
         // Address
         'street',
@@ -59,10 +61,20 @@ class Business extends Model
         return $this->user ? $this->user->last_name . ', ' . $this->user->first_name : '';
     }
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsToMany(Category::class, 'business_categories');
+        return $this->belongsTo(Category::class);
     }
+
+    public function subcategories()
+    {
+        return $this->belongsToMany(Subcategory::class, 'business_subcategories');
+    }
+
+    // public function subcategory()
+    // {
+    //     return $this->belongsTo(Subcategory::class);
+    // }
 
     public function products()
     {

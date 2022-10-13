@@ -28,19 +28,12 @@
                                         md="6"
                                         class="tw-py-0"
                                     >
-                                        <div class="body-2 mb-1">
-                                            Category
-                                        </div>
-                                        <div>
-                                            <v-chip
-                                                class="mr-1 mb-1"
-                                                color="primary"
-                                                outlined
-                                                v-for="category in formData.categories"
-                                            >
-                                                @{{ category.name }}
-                                            </v-chip>
-                                        </div>
+                                        <v-text-field
+                                            filled
+                                            v-model="formData.name"
+                                            label="Business Name"
+                                            readonly
+                                        ></v-text-field>
                                     </v-col>
 
                                     <v-col
@@ -56,7 +49,7 @@
                                         ></v-text-field>
                                     </v-col>
                                 </v-row>
-                                <v-row>
+                                <v-row class="mb-4">
                                     <v-col
                                         cols="12"
                                         md="6"
@@ -64,12 +57,26 @@
                                     >
                                         <v-text-field
                                             filled
-                                            v-model="formData.name"
-                                            label="Business Name"
+                                            v-model="formData.category.name"
+                                            label="Category"
                                             readonly
                                         ></v-text-field>
                                     </v-col>
 
+                                    <v-col
+                                        cols="12"
+                                        md="6"
+                                        class="tw-py-0"
+                                    >
+                                        <v-text-field
+                                            filled
+                                            v-model="subcategories"
+                                            label="Subcategory"
+                                            readonly
+                                        ></v-text-field>
+                                    </v-col>
+                                </v-row>
+                                <v-row>
                                     <v-col
                                         cols="12"
                                         md="6"

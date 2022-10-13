@@ -40,9 +40,7 @@ class UsersDatabaseSeeder extends Seeder
             $admin->assignRole('Admin');
         }
 
-        $categories = Category::factory(10)->create();
-
-        User::factory(50)->create()->each(function($user) use($categories) {
+        User::factory(50)->create()->each(function($user) {
 
             $role = Arr::random(["owner", "customer"]);
 
@@ -52,14 +50,23 @@ class UsersDatabaseSeeder extends Seeder
 
                 // Create Business
                 Business::factory(2)->create([
+
                     'user_id' => $user->id,
-                ])->each(function($business) use($categories) {
-                    // Add Category
-                    $business->categories()->attach($categories->random(2));
+
+                ])->each(function($business) {
+
+                    // Add Category and Subcategory
+                    $category_id = rand(1, 15);
+                    $business->category_id = $category_id;
+                    $business->save();
+
+                    $business->subcategories()->attach(Category::find($category_id)->subcategories->random(3));
+
                     // Add Product
                     Product::factory(3)->create([
                         'business_id' => $business->id
                     ]);
+
                     // Add Service
                     Service::factory(3)->create([
                         'business_id' => $business->id
