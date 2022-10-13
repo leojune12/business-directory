@@ -15,7 +15,7 @@
 
         data() {
             return {
-                url: '/businesses',
+                url: '/subcategories',
                 loading: true,
                 options: {},
                 headers: [
@@ -30,21 +30,9 @@
                         value: 'name',
                     },
                     {
-                        text: 'Owner',
-                        align: 'start',
-                        value: 'user_name',
-                        sortable: false,
-                    },
-                    {
                         text: 'Category',
                         align: 'start',
                         value: 'category.name',
-                        sortable: false,
-                    },
-                    {
-                        text: 'Address',
-                        align: 'start',
-                        value: 'address',
                         sortable: false,
                     },
                     {
@@ -64,8 +52,6 @@
                 filterDialog: false,
                 advanceFilters: {
                     name: null,
-                    address: null,
-                    contact_number: null,
                 },
             }
         },
@@ -83,12 +69,6 @@
             getFilters () {
 
                 let { sortBy, sortDesc, page, itemsPerPage } = this.options
-
-                // Customise sortBy
-                if (sortBy == 'date_added') {
-
-                    sortBy = 'created_at'
-                }
 
                 let filters = '?'
                 filters += 'page=' + page
@@ -196,7 +176,7 @@
             resetFilter() {
                 this.$refs.advanceFilterForm.reset()
             },
-        }
+        },
     })
     </script>
 @endpush

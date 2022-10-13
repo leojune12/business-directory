@@ -1,17 +1,18 @@
 <?php
 
-namespace $CLASS_NAMESPACE$;
+namespace Modules\Subcategory\Http\Controllers;
 
 use Throwable;
 use Illuminate\Http\Request;
-use Modules\$STUDLY_NAME$\Entities\$STUDLY_NAME$;
+use Modules\Subcategory\Entities\Subcategory;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Modules\Categories\Entities\Category;
 
-class $CLASS$ extends Controller
+class SubcategoryController extends Controller
 {
-    public $module = '$STUDLY_NAME$';
+    public $module = 'Subcategory';
 
     public function index(Request $request)
     {
@@ -19,14 +20,17 @@ class $CLASS$ extends Controller
             return $this->ajaxHandler($request);
         }
 
-        return view('$LOWER_NAME$::index', [
+        return view('subcategory::index', [
             'module' => $this->module,
         ]);
     }
 
     public function ajaxHandler($request)
     {
-        $query = $STUDLY_NAME$::whereNull('deleted_at');
+        $query = Subcategory::whereNull('deleted_at');
+
+        // Eager Loading
+        $query->with('category');
 
         $this->queryHandler($query, $request);
 
@@ -46,9 +50,12 @@ class $CLASS$ extends Controller
 
     public function create()
     {
-        return view('$LOWER_NAME$::form', [
+        $categories = Category::all();
+
+        return view('subcategory::form', [
             'module' => $this->module,
             'method' => 'Create',
+            'categories' => $categories,
         ]);
     }
 
@@ -56,6 +63,7 @@ class $CLASS$ extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'category_id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -72,8 +80,9 @@ class $CLASS$ extends Controller
 
         try {
 
-            $model = $STUDLY_NAME$::create($request->only([
-                'name'
+            $model = Subcategory::create($request->only([
+                'name',
+                'category_id',
             ]));
 
             DB::commit();
@@ -98,9 +107,9 @@ class $CLASS$ extends Controller
 
     public function show($id)
     {
-        $model = $STUDLY_NAME$::findOrFail($id);
+        $model = Subcategory::findOrFail($id)->load('category');
 
-        return view('$LOWER_NAME$::show', [
+        return view('subcategory::show', [
             'module' => $this->module,
             'method' => 'View',
             'model' => $model,
@@ -109,21 +118,25 @@ class $CLASS$ extends Controller
 
     public function edit($id)
     {
-        $model = $STUDLY_NAME$::findOrFail($id);
+        $model = Subcategory::findOrFail($id);
 
-        return view('$LOWER_NAME$::form', [
+        $categories = Category::all();
+
+        return view('subcategory::form', [
             'module' => $this->module,
             'method' => 'Update',
             'model' => $model,
+            'categories' => $categories,
         ]);
     }
 
     public function update(Request $request, $id)
     {
-        $model = $STUDLY_NAME$::findOrFail($id);
+        $model = Subcategory::findOrFail($id);
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'category_id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -141,7 +154,8 @@ class $CLASS$ extends Controller
         try {
 
             $model->update($request->only([
-                'name'
+                'name',
+                'category_id'
             ]));
 
             DB::commit();
@@ -170,7 +184,7 @@ class $CLASS$ extends Controller
 
         try {
 
-            $STUDLY_NAME$::destroy($request->id_array);
+            Subcategory::destroy($request->id_array);
 
             DB::commit();
 

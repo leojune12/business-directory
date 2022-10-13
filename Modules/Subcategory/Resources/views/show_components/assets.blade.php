@@ -15,39 +15,12 @@
 
         data() {
             return {
-                url: '/businesses',
+                url: '/subcategories',
                 formData: {
                     ...@json($model ?? []),
                 },
             }
         },
-
-        computed: {
-            // Convert subcategories to string
-            subcategories: function () {
-
-                if (!!this.formData.subcategories.length) {
-
-                    let subcategories_string = ""
-
-                    this.formData.subcategories.forEach((category, index, array) => {
-
-                        subcategories_string += category.name
-
-                        // Add comma
-                        if (array.length-1 != index) {
-
-                            subcategories_string += ', '
-                        }
-                    });
-
-                    return subcategories_string
-                } else {
-
-                    return "None"
-                }
-            }
-        }
     })
     </script>
 @endpush
