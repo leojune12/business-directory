@@ -42,7 +42,7 @@ class UsersDatabaseSeeder extends Seeder
             $admin->assignRole('Admin');
         }
 
-        User::factory(50)->create()->each(function($user) {
+        User::factory(1000)->create()->each(function($user) {
 
             $role = Arr::random(["owner", "customer"]);
 
@@ -51,7 +51,7 @@ class UsersDatabaseSeeder extends Seeder
             if ($role == "owner") {
 
                 // Create Business
-                Business::factory(2)->create([
+                Business::factory(3)->create([
 
                     'user_id' => $user->id,
 
