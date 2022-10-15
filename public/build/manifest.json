@@ -4,14 +4,14 @@
     "src": "resources/js/app.js",
     "isEntry": true
   },
-  "resources/css/app.css": {
-    "file": "assets/app.cb545a1c.css",
-    "src": "resources/css/app.css",
+  "resources/sass/app.scss": {
+    "file": "assets/app.b598130a.css",
+    "src": "resources/sass/app.scss",
     "isEntry": true
   },
-  "resources/sass/app.scss": {
-    "file": "assets/app.653048a2.css",
-    "src": "resources/sass/app.scss",
+  "resources/css/app.css": {
+    "file": "assets/app.100a2b4f.css",
+    "src": "resources/css/app.css",
     "isEntry": true
   }
 }
