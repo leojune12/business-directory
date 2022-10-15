@@ -24,14 +24,17 @@
                                 md="5"
                             >
                                 <v-combobox
-                                    {{-- v-model="advanceFilters.name" --}}
                                     placeholder="Search Business"
                                     prepend-inner-icon="mdi-magnify"
                                     solo
                                     hide-details
-                                    :items="[]"
+                                    :items="businessItems"
                                     :search-input.sync="advanceFilters.name"
                                     v-on:keyup.enter="search()"
+                                    v-on:keydown="showBusinessNames()"
+                                    item-text="name"
+                                    :loading="searchLoading"
+                                    clearable
                                 ></v-combobox>
                             </v-col>
                             <v-col
@@ -39,14 +42,17 @@
                                 md="5"
                             >
                                 <v-combobox
-                                    {{-- v-model="advanceFilters.address" --}}
                                     placeholder="Address"
                                     prepend-inner-icon="mdi-map-marker-radius"
                                     solo
                                     hide-details
-                                    :items="[]"
+                                    :items="addressItems"
                                     :search-input.sync="advanceFilters.address"
                                     v-on:keyup.enter="search()"
+                                    v-on:keydown="showAddressNames()"
+                                    item-text="address"
+                                    :loading="addressLoading"
+                                    clearable
                                 ></v-combobox>
                             </v-col>
                             <v-col
@@ -68,6 +74,7 @@
                             </v-col>
                         </v-row>
 
+                        {{-- Tabs --}}
                         <v-row
                             class="tw-pb-8"
                         >
@@ -108,6 +115,16 @@
                                         </v-icon>
                                         <span class="md:tw-block tw-hidden">
                                             Services
+                                        </span>
+                                    </v-tab>
+                                    <v-tab>
+                                        <v-icon
+                                            class="tw-mr-1"
+                                        >
+                                            mdi-sitemap
+                                        </v-icon>
+                                        <span class="md:tw-block tw-hidden">
+                                            Categories
                                         </span>
                                     </v-tab>
                                 </v-tabs>

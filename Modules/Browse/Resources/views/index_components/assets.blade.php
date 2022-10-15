@@ -57,6 +57,12 @@
                     name: null,
                     address: null,
                 },
+                businessItemsDebounce: null,
+                businessItems: [],
+                searchLoading: false,
+                addressItemsDebounce: null,
+                addressItems: [],
+                addressLoading: false,
             }
         },
 
@@ -106,10 +112,6 @@
 
                 this.loading = true
 
-                this.$forceUpdate()
-
-                console.log(this.getAdvanceFilters)
-
                 await axios.get(this.url + this.getFilters + this.getAdvanceFilters)
                     .then(response => {
                         this.pagination = response.data
@@ -127,45 +129,17 @@
                     })
             },
 
-            confirmDelete(id) {
-
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#d33',
-                    confirmButtonText: 'Delete'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        this.loading = true
-                        this.delete(id)
-                    }
-                })
+            search() {
+                this.fetchTableData()
             },
 
-            async delete(id) {
+            async fetchBusinessNames() {
 
-                let id_array = Array.isArray(id)
-                    ? Object.keys(id).map(index => id[index].id)
-                    : [id]
-
-                let url = this.url + '/' + id_array[0]
-
-                await axios.post(url, {
-                    _method: 'delete',
-                    id_array: id_array
-                })
+                await axios.get('/search-business-name/' + this.advanceFilters.name)
                     .then(response => {
-                        Swal.fire({
-                            title: "Success",
-                            text: "Deleted successfully.",
-                            icon: "success",
-                            confirmButtonColor: "#4CAF50",
-                            timer: 3000
-                        })
-                        this.selected = []
-                        this.fetchTableData()
+
+                        this.searchLoading = false
+                        this.businessItems = response.data
                     })
                     .catch(error => {
                         Swal.fire({
@@ -177,16 +151,44 @@
                     })
             },
 
-            search() {
-                this.fetchTableData()
+            showBusinessNames() {
+
+                if (this.businessItemsDebounce) clearTimeout(this.businessItemsDebounce)
+
+                this.businessItemsDebounce = setTimeout(() => {
+
+                    this.searchLoading = true
+                    this.fetchBusinessNames()
+                }, 600)
             },
 
-            closeFilter() {
-                this.filterDialog = false
+            async fetchAddressNames() {
+
+                await axios.get('/search-address/' + this.advanceFilters.address)
+                    .then(response => {
+
+                        this.addressLoading = false
+                        this.addressItems = response.data
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            title: 'Something went wrong',
+                            text: "Please refresh the page.",
+                            icon: 'error',
+                            confirmButtonColor: '#d33',
+                        })
+                    })
             },
 
-            resetFilter() {
-                this.$refs.advanceFilterForm.reset()
+            showAddressNames() {
+
+                if (this.addressItemsDebounce) clearTimeout(this.addressItemsDebounce)
+
+                this.addressItemsDebounce = setTimeout(() => {
+
+                    this.addressLoading = true
+                    this.fetchAddressNames()
+                }, 600)
             },
         },
     })

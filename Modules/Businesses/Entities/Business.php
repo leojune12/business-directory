@@ -34,6 +34,7 @@ class Business extends Model
         'category_id',
 
         // Address
+        'full_address',
         'street',
         'region_id',
         'province_id',
