@@ -30,4 +30,9 @@ class Province extends Model
     {
         return $this->hasMany(City::class, 'provCode', 'provCode');
     }
+
+    public function businesses()
+    {
+        return $this->hasMany(Business::class, 'province_id', 'regCode');
+    }
 }

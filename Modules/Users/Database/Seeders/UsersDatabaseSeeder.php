@@ -2,16 +2,18 @@
 
 namespace Modules\Users\Database\Seeders;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Modules\Users\Entities\User;
+use Modules\Address\Entities\City;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
-use Modules\Businesses\Entities\Business;
-use Modules\Categories\Entities\Category;
 use Modules\Product\Entities\Product;
 use Modules\Service\Entities\Service;
+use Illuminate\Database\Eloquent\Model;
+use Modules\Address\Entities\Barangay;
+use Modules\Businesses\Entities\Business;
+use Modules\Categories\Entities\Category;
 
 class UsersDatabaseSeeder extends Seeder
 {
@@ -54,6 +56,14 @@ class UsersDatabaseSeeder extends Seeder
                     'user_id' => $user->id,
 
                 ])->each(function($business) {
+
+                    $cities = City::where('provCode', 619)->get();
+                    $city = $cities->random();
+                    $business->city_id = $city->citymunCode;
+
+                    $barangays = Barangay::where('citymunCode', $city->citymunCode)->get();
+                    $barangay = $barangays->random();
+                    $business->barangay_id = $barangay->brgyCode;
 
                     // Add Category and Subcategory
                     $category_id = rand(1, 15);

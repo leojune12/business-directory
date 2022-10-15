@@ -6,5 +6,6 @@
     "Product": true,
     "Service": true,
     "Address": true,
-    "Subcategory": true
+    "Subcategory": true,
+    "Browse": true
 }

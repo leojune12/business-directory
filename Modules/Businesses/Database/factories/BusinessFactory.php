@@ -31,8 +31,8 @@ class BusinessFactory extends Factory
             'street' => fake()->streetName(),
             'region_id' => 6,
             'province_id' => 619,
-            'city_id' => 61914,
-            'barangay_id' => 61914004
+            // 'city_id' => 61914,
+            // 'barangay_id' => 61914004
         ];
     }
 }
