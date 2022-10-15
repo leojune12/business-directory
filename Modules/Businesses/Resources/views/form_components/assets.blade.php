@@ -18,33 +18,62 @@
                     errors: null,
                     formData: {
                         ...@json($model ?? []),
-                        model_categories: {!! $model_categories !!},
+                        model_subcategories: {!! $model_subcategories !!}
                     },
                     categories: {!! $categories !!},
-                    categoryErrorMessage: "",
+                    subcategories: [],
+                    subcategoryError: "",
+                    cities: {!! $cities ?? [] !!},
+                    barangays: [1],
+                    region: "{!! $region !!}",
+                    province: "{!! $province !!}",
                 }
             },
 
             watch: {
-                'formData.model_categories': {
+                'formData.model_subcategories': {
                     handler () {
-                        if (this.formData.model_categories.length > 3) {
+                        if (this.formData.model_subcategories != null && this.formData.model_subcategories.length > 3) {
 
-                            this.categoryErrorMessage = "Only 3 categories allowed"
+                            this.subcategoryError = "Only 3 subcategories allowed"
                         } else {
 
-                            this.categoryErrorMessage = ""
+                            this.subcategoryError = ""
                         }
                     },
                     deep: true,
                 },
+
+                'formData.city_id': {
+                    handler () {
+
+                        this.getBarangays(this.formData.city_id)
+                        this.formData.barangay_id = null
+                    },
+                    deep: true,
+                },
+
+                'formData.category_id': {
+                    handler () {
+
+                        this.getSubcategories(this.formData.category_id)
+                        this.formData.model_subcategories = null
+                    },
+                    deep: true,
+                },
+            },
+
+            mounted() {
+
+                this.getBarangays(this.formData.city_id)
+                this.getSubcategories(this.formData.category_id)
             },
 
             methods: {
 
                 async submit() {
 
-                    if (this.formData.model_categories.length > 3) {
+                    if (this.formData.model_subcategories != null && this.formData.model_subcategories.length > 3) {
 
                         Swal.fire({
                             title: "Whoops!",
@@ -83,6 +112,30 @@
                                 this.errors = response.data.errors
                                 document.getElementById('app').scrollIntoView();
                             }
+                        }
+                    )
+                },
+
+                async getBarangays(city_id) {
+
+                    this.barangays = []
+
+                    await axios.get('/get-address?q=barangay&parent_id=' + city_id)
+                        .then((response) => {
+
+                            this.barangays = response.data.barangays
+                        }
+                    )
+                },
+
+                async getSubcategories(category_id) {
+
+                    this.subcategories = []
+
+                    await axios.get('/get-subcategories/' + category_id)
+                        .then((response) => {
+
+                            this.subcategories = response.data.subcategories
                         }
                     )
                 },

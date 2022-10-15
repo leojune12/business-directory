@@ -33,15 +33,19 @@
                         text: 'Owner',
                         align: 'start',
                         value: 'user_name',
+                        sortable: false,
+                    },
+                    {
+                        text: 'Category',
+                        align: 'start',
+                        value: 'category.name',
+                        sortable: false,
                     },
                     {
                         text: 'Address',
                         align: 'start',
                         value: 'address',
-                    },
-                    {
-                        text: 'Contact No.',
-                        value: 'contact_number'
+                        sortable: false,
                     },
                     {
                         text: 'Action',

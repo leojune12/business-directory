@@ -2,5 +2,10 @@
     "Users": true,
     "Roles": true,
     "Businesses": true,
-    "Categories": true
+    "Categories": true,
+    "Product": true,
+    "Service": true,
+    "Address": true,
+    "Subcategory": true,
+    "Browse": true
 }

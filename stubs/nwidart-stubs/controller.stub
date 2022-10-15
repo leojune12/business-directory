@@ -72,7 +72,9 @@ class $CLASS$ extends Controller
 
         try {
 
-            $model = $STUDLY_NAME$::create($request->all());
+            $model = $STUDLY_NAME$::create($request->only([
+                'name'
+            ]));
 
             DB::commit();
 
@@ -138,7 +140,9 @@ class $CLASS$ extends Controller
 
         try {
 
-            $model->update($request->all());
+            $model->update($request->only([
+                'name'
+            ]));
 
             DB::commit();
 
