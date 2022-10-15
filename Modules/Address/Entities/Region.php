@@ -5,6 +5,7 @@ namespace Modules\Address\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Businesses\Entities\Business;
 
 class Region extends Model
 {
@@ -29,5 +30,10 @@ class Region extends Model
     public function provinces()
     {
         return $this->hasMany(Province::class, 'regCode', 'regCode');
+    }
+
+    public function businesses()
+    {
+        return $this->hasMany(Business::class, 'region_id', 'regCode');
     }
 }

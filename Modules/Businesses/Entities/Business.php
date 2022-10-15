@@ -34,6 +34,7 @@ class Business extends Model
         'category_id',
 
         // Address
+        'full_address',
         'street',
         'region_id',
         'province_id',
@@ -88,30 +89,30 @@ class Business extends Model
 
     public function region()
     {
-        return $this->hasOne(Region::class, 'regCode', 'region_id');
+        return $this->belongsTo(Region::class, 'region_id', 'regCode');
     }
 
     public function province()
     {
-        return $this->hasOne(Province::class, 'provCode', 'province_id');
+        return $this->belongsTo(Province::class, 'province_id', 'provCode');
     }
 
     public function city()
     {
-        return $this->hasOne(City::class, 'citymunCode', 'city_id');
+        return $this->belongsTo(City::class, 'city_id', 'citymunCode');
     }
 
     public function barangay()
     {
-        return $this->hasOne(Barangay::class, 'brgyCode', 'barangay_id');
+        return $this->belongsTo(Barangay::class, 'barangay_id', 'brgyCode');
     }
 
     public function getAddressAttribute()
     {
         $street = $this->street ? $this->street . ', ' : '';
-        $barangay = $this->barangay->brgyDesc ? $this->barangay->brgyDesc . ', ' : '';
-        $city = $this->city->citymunDesc ? $this->city->citymunDesc . ', ' : '';
-        $province = $this->province->provDesc ? $this->province->provDesc : '';
+        $barangay = $this->barangay ? $this->barangay->brgyDesc . ', ' : '';
+        $city = $this->city ? $this->city->citymunDesc . ', ' : '';
+        $province = $this->province ? $this->province->provDesc : '';
 
         return $street . $barangay . $city. $province;
     }

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->foreignId('category_id')->nullable();
             // $table->foreignId('subcategory_id')->nullable();
+            $table->string('full_address')->nullable();
             $table->string('street')->nullable();
             $table->foreignId('region_id')->nullable();
             $table->foreignId('province_id')->nullable();

@@ -25,4 +25,9 @@ class Barangay extends Model
      * @var string
      */
     protected $table = 'address_barangays';
+
+    public function businesses()
+    {
+        return $this->hasMany(Business::class, 'barangay_id', 'regCode');
+    }
 }

@@ -30,4 +30,9 @@ class City extends Model
     {
         return $this->hasMany(Barangay::class, 'citymunCode', 'citymunCode');
     }
+
+    public function businesses()
+    {
+        return $this->hasMany(Business::class, 'city_id', 'regCode');
+    }
 }

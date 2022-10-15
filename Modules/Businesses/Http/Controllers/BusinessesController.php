@@ -3,6 +3,7 @@
 namespace Modules\Businesses\Http\Controllers;
 
 use Throwable;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
@@ -168,6 +169,9 @@ class BusinessesController extends Controller
             ]));
 
             $model->subcategories()->sync($request->model_subcategories);
+
+            $model->full_address = $request->street . ', ' . $model->barangay->brgyDesc . ', ' . ucwords(Str::lower($model->city->citymunDesc)) . ', ' . ucwords(Str::lower($model->province->provDesc));
+            $model->save();
 
             DB::commit();
 
