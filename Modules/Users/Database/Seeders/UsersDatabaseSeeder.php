@@ -51,7 +51,7 @@ class UsersDatabaseSeeder extends Seeder
             if ($role == "owner") {
 
                 // Create Business
-                Business::factory(3)->create([
+                Business::factory(2)->create([
 
                     'user_id' => $user->id,
 
@@ -78,12 +78,12 @@ class UsersDatabaseSeeder extends Seeder
                     $business->subcategories()->attach(Category::find($category_id)->subcategories->random(3));
 
                     // Add Product
-                    Product::factory(3)->create([
+                    Product::factory(1)->create([
                         'business_id' => $business->id
                     ]);
 
                     // Add Service
-                    Service::factory(3)->create([
+                    Service::factory(1)->create([
                         'business_id' => $business->id
                     ]);
                 });

@@ -14,8 +14,9 @@ return new class extends Migration
      */
     public function up()
     {
+        // Load SQL file
         ini_set('memory_limit', '-1');
-        DB::unprepared( file_get_contents( "storage/addresses.sql" ) );
+        DB::unprepared( file_get_contents("storage/database/address.sql") );
     }
 
     /**
