@@ -39,7 +39,7 @@ class UsersDatabaseSeeder extends Seeder
                 "remember_token" => Str::random(10),
             ]);
 
-            $admin->assignRole('Admin');
+            $admin->assignRole('admin');
         }
 
         User::factory(1000)->create()->each(function($user) {
