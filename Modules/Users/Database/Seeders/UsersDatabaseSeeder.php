@@ -42,7 +42,7 @@ class UsersDatabaseSeeder extends Seeder
             $admin->assignRole('Admin');
         }
 
-        User::factory(20)->create()->each(function($user) {
+        User::factory(1000)->create()->each(function($user) {
 
             $role = Arr::random(["owner", "customer"]);
 
@@ -51,7 +51,7 @@ class UsersDatabaseSeeder extends Seeder
             if ($role == "owner") {
 
                 // Create Business
-                Business::factory(2)->create([
+                Business::factory(5)->create([
 
                     'user_id' => $user->id,
 
@@ -78,14 +78,14 @@ class UsersDatabaseSeeder extends Seeder
                     $business->subcategories()->attach(Category::find($category_id)->subcategories->random(3));
 
                     // Add Product
-                    Product::factory(1)->create([
-                        'business_id' => $business->id
-                    ]);
+                    // Product::factory(1)->create([
+                    //     'business_id' => $business->id
+                    // ]);
 
                     // Add Service
-                    Service::factory(1)->create([
-                        'business_id' => $business->id
-                    ]);
+                    // Service::factory(1)->create([
+                    //     'business_id' => $business->id
+                    // ]);
                 });
             }
         });
