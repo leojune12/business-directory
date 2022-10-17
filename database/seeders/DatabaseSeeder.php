@@ -4,10 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Modules\Categories\Database\Seeders\CategoriesDatabaseSeeder;
 use Modules\Roles\Database\Seeders\RolesDatabaseSeeder;
-use Modules\Subcategory\Database\Seeders\SubcategoryDatabaseSeeder;
 use Modules\Users\Database\Seeders\UsersDatabaseSeeder;
+use Modules\Address\Database\Seeders\AddressDatabaseSeeder;
+use Modules\Categories\Database\Seeders\CategoriesDatabaseSeeder;
+use Modules\Subcategory\Database\Seeders\SubcategoryDatabaseSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
             RolesDatabaseSeeder::class,
             CategoriesDatabaseSeeder::class,
             SubcategoryDatabaseSeeder::class,
+            AddressDatabaseSeeder::class,
             UsersDatabaseSeeder::class,
         ]);
     }

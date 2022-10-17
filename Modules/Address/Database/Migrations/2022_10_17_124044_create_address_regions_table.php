@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -14,9 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        // Load SQL file
-        // ini_set('memory_limit', '-1');
-        // DB::unprepared( file_get_contents("storage/database/address.sql") );
+            Schema::create('address_regions', function (Blueprint $table) {
+            $table->id();
+            $table->string('psgcCode');
+            $table->bigInteger('regCode');
+            $table->string('regDesc');
+
+            $table->timestamps();
+        });
     }
 
     /**
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('address');
+        Schema::dropIfExists('address_regions');
     }
 };
