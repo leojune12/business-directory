@@ -65,7 +65,8 @@ class UsersDatabaseSeeder extends Seeder
                     $barangay = $barangays->random();
                     $business->barangay_id = $barangay->brgyCode;
 
-                    $street = fake()->streetName();
+                    // $street = fake()->streetName();
+                    $street = "Fake Street";
                     $business->street = $street;
 
                     $business->full_address = $street . ', ' . $barangay->brgyDesc . ', ' . ucwords(Str::lower($city->citymunDesc)) . ', Capiz';
