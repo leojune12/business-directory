@@ -66,7 +66,7 @@
                 }
 
                 return filters
-            }
+            },
         },
 
         methods: {
@@ -170,6 +170,21 @@
                     this.locationLoading = true
                     this.fetchLocationNames()
                 }, 600)
+            },
+
+            getImage(name) {
+
+                let images = [
+                    // 'https://ui-avatars.com/api/?name=' + name + '&background=random',
+                    'https://picsum.photos/seed/picsum/200',
+                    'https://random.imagecdn.app/200/200',
+                    'https://api.lorem.space/image/shoes?w=150&h=150',
+                    'https://api.lorem.space/image/house?w=150&h=150',
+                    'https://api.lorem.space/image/pizza?w=150&h=150',
+                    'https://api.lorem.space/image/burger?w=150&h=150',
+                ]
+
+                return images[Math.floor(Math.random()*images.length)]
             },
         },
     })

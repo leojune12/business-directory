@@ -21,7 +21,7 @@ class Business extends Model
 
     protected $appends = [
         'user_name',
-        'address',
+        // 'address',
     ];
 
     protected $fillable = [

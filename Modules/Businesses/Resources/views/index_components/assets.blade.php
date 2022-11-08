@@ -44,7 +44,7 @@
                     {
                         text: 'Address',
                         align: 'start',
-                        value: 'address',
+                        value: 'full_address',
                         sortable: false,
                     },
                     {

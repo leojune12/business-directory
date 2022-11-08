@@ -26,7 +26,7 @@ class BrowseController extends Controller
         $query = Business::whereNull('deleted_at');
 
         // Eager Loading
-        $query->with('user:id,first_name,last_name', 'category', 'province', 'city', 'barangay');
+        $query->with('user:id,first_name,last_name', 'category');
 
         $this->queryHandler($query, $request);
 
