@@ -8,6 +8,11 @@
             width: 60px !important;
             height: 60px !important;
         }
+
+        .toolbar-search-input .v-input__slot{
+
+            box-shadow: none !important;
+        }
     </style>
 @endpush
 @push('scripts')
@@ -15,6 +20,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="https://unpkg.com/vue-infinite-loading@^2/dist/vue-infinite-loading.js"></script>
     <script type="text/javascript">
     new Vue({
         el: '#app',
@@ -24,72 +30,29 @@
             return {
                 url: '/browse',
                 loading: true,
-                options: {},
-                headers: [
-                    {
-                        text: 'ID',
-                        align: 'start',
-                        value: 'id',
-                    },
-                    {
-                        text: 'Name',
-                        align: 'start',
-                        value: 'name',
-                    },
-                    {
-                        text: 'Action',
-                        value: 'actions',
-                        sortable: false,
-                    },
-                ],
-                footerProps: {
-                    showFirstLastPage: true,
-                    itemsPerPageOptions: [10, 25, 50],
-                    prevIcon: 'mdi-arrow-left',
-                    nextIcon: 'mdi-arrow-right',
-                },
-                selected: [],
                 pagination: {
-                    data: []
+                    data: [],
                 },
-                filterDialog: false,
                 advanceFilters: {
-                    name: null,
-                    address: null,
+                    page: 1,
+                    business_name: null,
+                    location: null,
                 },
                 businessItemsDebounce: null,
                 businessItems: [],
                 searchLoading: false,
-                addressItemsDebounce: null,
-                addressItems: [],
-                addressLoading: false,
+                locationItemsDebounce: null,
+                locationItems: [],
+                locationLoading: false,
             }
-        },
-
-        mounted() {
-
-            // this.fetchTableData()
-        },
-
-        watch: {
-            options: {
-                handler () {
-                    this.fetchTableData()
-                },
-                deep: true,
-            },
         },
 
         computed: {
             getFilters () {
 
-                let { sortBy, sortDesc, page, itemsPerPage } = this.options
-
                 let filters = '?'
-                filters += 'page=' + page
-                filters += '&perPage=' + itemsPerPage
-                filters += '&orderBy=' + sortBy
-                filters += '&orderType=' + (sortDesc[0] ? 'ASC' : 'DESC')
+                filters += 'page=' + this.advanceFilters.page
+                filters += '&perPage=10'
 
                 return filters
             },
@@ -108,34 +71,52 @@
 
         methods: {
 
-            async fetchTableData() {
+            async fetchTableData($state) {
 
                 this.loading = true
 
                 await axios.get(this.url + this.getFilters + this.getAdvanceFilters)
                     .then(response => {
-                        this.pagination = response.data
-                        this.options.page = response.data.current_page
-                        this.options.itemsPerPage = parseInt(response.data.per_page)
+
+                        if (response.data.data.length) {
+                            this.pagination.data.push(...response.data.data)
+
+                            this.advanceFilters.page += 1
+
+                            $state.loaded();
+                        } else {
+
+                            $state.complete();
+                        }
+
                         this.loading = false
                     })
                     .catch(error => {
                         Swal.fire({
                             title: 'Something went wrong',
                             text: "Please refresh the page.",
+                            // text: error,
                             icon: 'error',
                             confirmButtonColor: '#d33',
                         })
                     })
             },
 
-            search() {
-                this.fetchTableData()
+            search(dialog) {
+
+                if (!!dialog) {
+
+                    dialog.value = false
+                }
+
+                this.pagination.data = []
+                this.advanceFilters.page = 1
+                this.$refs.infiniteLoading.$emit("$InfiniteLoading:reset", { target: this.$refs.infiniteLoading, });
             },
 
             async fetchBusinessNames() {
 
-                await axios.get('/search-business-name/' + this.advanceFilters.name)
+                await axios.get('/search-business-name/' + this.advanceFilters.business_name)
                     .then(response => {
 
                         this.searchLoading = false
@@ -162,13 +143,13 @@
                 }, 600)
             },
 
-            async fetchAddressNames() {
+            async fetchLocationNames() {
 
-                await axios.get('/search-address/' + this.advanceFilters.address)
+                await axios.get('/search-address/' + this.advanceFilters.location)
                     .then(response => {
 
-                        this.addressLoading = false
-                        this.addressItems = response.data
+                        this.locationLoading = false
+                        this.locationItems = response.data
                     })
                     .catch(error => {
                         Swal.fire({
@@ -180,14 +161,14 @@
                     })
             },
 
-            showAddressNames() {
+            showLocationNames() {
 
-                if (this.addressItemsDebounce) clearTimeout(this.addressItemsDebounce)
+                if (this.locationItemsDebounce) clearTimeout(this.locationItemsDebounce)
 
-                this.addressItemsDebounce = setTimeout(() => {
+                this.locationItemsDebounce = setTimeout(() => {
 
-                    this.addressLoading = true
-                    this.fetchAddressNames()
+                    this.locationLoading = true
+                    this.fetchLocationNames()
                 }, 600)
             },
         },

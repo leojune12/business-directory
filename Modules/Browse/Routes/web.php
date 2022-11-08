@@ -1,6 +1,7 @@
 <?php
 
 use Modules\Browse\Services\BrowseService;
+use Modules\Browse\Http\Controllers\BrowseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,8 @@ use Modules\Browse\Services\BrowseService;
 //     Route::resource('browse', BrowseController::class);
 // });
 
-Route::resource('browse', BrowseController::class);
+Route::get('browse', [BrowseController::class, 'index']);
+Route::get('browse/business', [BrowseController::class, 'index']);
 
 Route::get('search-business-name/{business_name?}', function ($business_name = '') {
 
