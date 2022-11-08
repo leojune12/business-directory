@@ -5,7 +5,7 @@
         <v-toolbar
             color="transparent"
             flat
-            height="72"
+            :height="$vuetify.breakpoint.smAndDown ? 60 : 72"
             {{-- extension-height="64" --}}
         >
             <v-avatar
