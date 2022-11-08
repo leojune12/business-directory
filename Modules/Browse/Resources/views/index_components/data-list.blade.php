@@ -102,8 +102,8 @@
                         <div class="tw-animate-pulse tw-flex tw-space-x-4 tw-mb-4">
                             <div class="tw-rounded-full tw-bg-slate-300 tw-h-14 tw-w-14"></div>
                             <div class="tw-flex tw-flex-1 tw-flex-col tw-justify-center tw-space-y-2">
-                                <div class="tw-h-5 tw-w-56 tw-bg-slate-300 tw-rounded"></div>
-                                <div class="tw-h-3 tw-w-60 tw-bg-slate-300 tw-rounded"></div>
+                                <div class="tw-h-5 tw-bg-slate-300 tw-rounded"></div>
+                                <div class="tw-h-3 tw-bg-slate-300 tw-rounded"></div>
                             </div>
                         </div>
                         <div class="tw-space-y-3">
