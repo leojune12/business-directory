@@ -28,11 +28,13 @@ class Business extends Model
         'name',
         'slug',
         'contact_number',
+        'email',
         'website',
         'facebook_link',
         'map_location',
         'description',
         'category_id',
+        'rating',
 
         // Address
         'full_address',

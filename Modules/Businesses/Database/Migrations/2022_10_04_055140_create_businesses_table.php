@@ -19,11 +19,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('contact_number')->nullable();
+            $table->string('email')->nullable();
             $table->string('website')->nullable();
             $table->text('facebook_link')->nullable();
             $table->text('map_location')->nullable();
             $table->text('description')->nullable();
             $table->foreignId('category_id')->nullable();
+            $table->tinyInteger('rating')->default(0);
+
             // $table->foreignId('subcategory_id')->nullable();
             $table->string('full_address')->nullable();
             $table->string('street')->nullable();
