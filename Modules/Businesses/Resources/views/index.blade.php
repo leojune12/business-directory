@@ -140,9 +140,6 @@
                     </v-data-table>
                 </v-container>
             </v-main>
-
-            @include('businesses::index_components.filter_dialog')
-
         </v-app>
     </div>
 

@@ -2,6 +2,7 @@
 
 namespace Modules\Businesses\Database\factories;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BusinessFactory extends Factory
@@ -20,8 +21,11 @@ class BusinessFactory extends Factory
      */
     public function definition()
     {
+        $name = fake()->company();
+
         return [
-            'name' => fake()->company(),
+            'name' => $name,
+            'slug' => Str::slug($name),
             // 'address' => fake()->address(),
             'contact_number' => fake()->phoneNumber(),
             'website' => "https://roxas-index.herokuapp.com",

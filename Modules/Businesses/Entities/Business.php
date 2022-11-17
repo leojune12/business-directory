@@ -26,6 +26,7 @@ class Business extends Model
 
     protected $fillable = [
         'name',
+        'slug',
         'contact_number',
         'website',
         'facebook_link',

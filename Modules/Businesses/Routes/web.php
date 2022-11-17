@@ -1,5 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Modules\Businesses\Http\Controllers\BusinessesController;
+
+// use Modules\Browse\Http\Controllers\BrowseController;
+// use Modules\Businesses\Http\Controllers\BusinessesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,5 +17,9 @@
 |
 */
 Route::group(['middleware' => ['role:admin']], function () {
+
     Route::resource('businesses', BusinessesController::class);
 });
+
+// Public
+Route::get('/business/{id}/{slug?}', [BusinessesController::class, 'viewBusiness']);

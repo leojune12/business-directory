@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('name');
+            $table->string('slug');
             $table->string('contact_number')->nullable();
             $table->string('website')->nullable();
             $table->text('facebook_link')->nullable();

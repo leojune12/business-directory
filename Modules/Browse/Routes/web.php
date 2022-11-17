@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use Modules\Browse\Services\BrowseService;
 use Modules\Browse\Http\Controllers\BrowseController;
 
@@ -18,8 +19,12 @@ use Modules\Browse\Http\Controllers\BrowseController;
 //     Route::resource('browse', BrowseController::class);
 // });
 
-Route::get('browse', [BrowseController::class, 'index']);
-Route::get('browse/business', [BrowseController::class, 'index']);
+Route::prefix('browse')->group(function () {
+
+    Route::get('/', [BrowseController::class, 'index']);
+    Route::get('/business', [BrowseController::class, 'index']);
+    // Route::get('/business/{id}/{slug?}', [BrowseController::class, 'businessShow']);
+});
 
 Route::get('search-business-name/{business_name?}', function ($business_name = '') {
 

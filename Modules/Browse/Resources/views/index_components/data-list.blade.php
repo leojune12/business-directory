@@ -16,9 +16,9 @@
                     >
                     <div class="tw-flex tw-flex-1 tw-flex-col tw-justify-center tw-space-y-1">
                         <div class="tw-grid tw-grid-cols-1">
-                            <div class="md:tw-text-lg tw-text-sm tw-text-black tw-font-medium tw-truncate">
+                            <a :href="'/business/' + item.id + '/' + item.slug" class="md:tw-text-lg tw-text-sm tw-text-black tw-font-medium tw-truncate">
                                 @{{ item.name }}
-                            </div>
+                            </a>
                         </div>
                         <div class="tw-text-sm tw-text-gray-500 tw-flex -tw-ml-1">
                             <span>

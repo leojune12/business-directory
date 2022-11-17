@@ -47,4 +47,20 @@ class BrowseController extends Controller
 
         return $query;
     }
+
+    public function businessShow($id, $slug = '')
+    {
+        $model = Business::findOrFail($id)->load('category', 'subcategories', 'region', 'province', 'city', 'barangay');
+
+        if ($model->slug != $slug) {
+
+            abort(404);
+        }
+
+        return view('businesses::show', [
+            'module' => $this->module,
+            'method' => 'View',
+            'model' => $model,
+        ]);
+    }
 }
