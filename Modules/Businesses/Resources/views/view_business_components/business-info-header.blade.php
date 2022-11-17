@@ -1,6 +1,6 @@
 <div class="tw-bg-white">
     <v-container
-        class="tw-py-5"
+        {{-- class="tw-py-5" --}}
     >
         <div class="tw-flex md:tw-flex-row tw-flex-col tw-items-center">
             <div class="tw-mr-0 md:tw-mr-6 tw-mb-3 md:tw-mb-0">
@@ -11,7 +11,7 @@
                 >
             </div>
             <div>
-                <div class="tw-text-3xl tw-font-bold tw-text-center md:tw-text-start">
+                <div class="md:tw-text-3xl tw-text-2xl tw-font-bold tw-text-center md:tw-text-start">
                     @{{ business.name }}
                 </div>
                 {{-- <div class="d-flex tw-text-gray-400">

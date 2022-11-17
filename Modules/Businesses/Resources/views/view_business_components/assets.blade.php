@@ -61,7 +61,7 @@
 
                 this.windowTop = window.top.scrollY
 
-                this.$vuetify.breakpoint.mdAndDown ? this.headerHeight = 304 : this.headerHeight = 240
+                this.$vuetify.breakpoint.mdAndDown ? this.headerHeight = 284 : this.headerHeight = 240
 
                 if (this.windowTop > this.headerHeight) {
 

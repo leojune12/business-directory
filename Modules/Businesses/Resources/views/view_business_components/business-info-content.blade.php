@@ -7,7 +7,7 @@
             md="6"
             offset-md="1"
         >
-            <div class="tw-bg-white tw-p-6 tw-rounded-md">
+            <div class="tw-bg-white md:tw-p-6 tw-p-4 tw-rounded-md">
                 <div class="tw-mb-7">
                     <div class="tw-font-bold tw-mb-2 tw-text-lg">
                         Category
