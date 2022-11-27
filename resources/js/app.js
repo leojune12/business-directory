@@ -1,12 +1,12 @@
 import './bootstrap';
 
-import Alpine from 'alpinejs';
+// import Alpine from 'alpinejs';
 
 // import.meta.glob([
 //     '../images/**',
 //     '../fonts/**',
 // ]);
 
-window.Alpine = Alpine;
+// window.Alpine = Alpine;
 
-Alpine.start();
+// Alpine.start();
