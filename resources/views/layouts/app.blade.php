@@ -18,12 +18,12 @@
             'resources/sass/app.scss',
         ])
 
-        <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+        {{-- <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"> --}}
 
         @stack('links')
 
     </head>
-    <body class="font-sans antialiased">
+    <body class="">
         {{-- <div class="min-h-screen bg-gray-100"> --}}
         <div>
             <!-- Page Content -->
@@ -32,7 +32,7 @@
 
         @stack('scripts')
 
-        <script src="../../bootstrap/js/bootstrap.min.js"></script>
+        {{-- <script src="../../bootstrap/js/bootstrap.min.js"></script> --}}
 
     </body>
 </html>
