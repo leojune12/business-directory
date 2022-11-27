@@ -8,19 +8,21 @@
             :height="$vuetify.breakpoint.smAndDown ? 60 : 72"
             {{-- extension-height="64" --}}
         >
-            <v-avatar
-                color="white"
-                size="36"
-                class="tw-mr-2"
-            >
-                <span class="dark--text text-h5">RI</span>
-            </v-avatar>
+            <a href="/" class="tw-flex tw-items-center">
+                <v-avatar
+                    color="white"
+                    size="36"
+                    class="tw-mr-2"
+                >
+                    <span class="dark--text text-h5">RI</span>
+                </v-avatar>
 
-            <v-toolbar-title
-                class="tw-mr-6 white--text sm:tw-block tw-hidden"
-            >
-                Roxas Index
-            </v-toolbar-title>
+                <v-toolbar-title
+                    class="tw-mr-6 white--text sm:tw-block tw-hidden"
+                >
+                    Roxas Index
+                </v-toolbar-title>
+            </a>
 
             {{-- <div
                 v-if=!$vuetify.breakpoint.smAndDown

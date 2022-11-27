@@ -28,7 +28,7 @@
                         class="tw-flex tw-flex-col tw-gap-y-5"
                     >
                         <div>
-                            <h4 class="tw-mb-0">Browse For Business</h4>
+                            <h4 class="tw-mb-0 tw-text-xl tw-font-bold">Browse For Business</h4>
                         </div>
 
                         {{-- Skeleton Loader --}}

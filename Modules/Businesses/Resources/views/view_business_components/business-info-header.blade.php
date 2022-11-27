@@ -32,8 +32,10 @@
                         size="18"
                     ></v-rating>
                     <div class="tw-mt-1 tw-ml-1 tw-text-sm tw-text-gray-500 tw-flex tw-items-center tw-leading-none">
-                        (@{{ business.rating }} Stars)
-                        {{-- (123 Reviews) --}}
+                        {{-- (@{{ business.rating }} Stars) --}}
+                        (<a href="#" class="tw-text-gray-500 hover:tw-underline">
+                            123 Reviews
+                        </a>)
                     </div>
                 </div>
             </div>

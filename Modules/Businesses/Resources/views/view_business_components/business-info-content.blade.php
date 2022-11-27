@@ -30,9 +30,6 @@
                                 :key="category.id"
                                 class="tw-flex tw-align-center"
                             >
-                                <svg style="width:20px;height:20px" viewBox="0 0 24 24">
-                                    <path fill="currentColor" d="M10,17L15,12L10,7V17Z" />
-                                </svg>
                                 @{{ category.name }}
                             </li>
                         </ul>
@@ -100,7 +97,7 @@
                         </div>
                         <div>
                             <div class="tw-text-sm">
-                                <a :href="business.website">
+                                <a target="_blank" :href="business.website">
                                     @{{ business.website }}
                                 </a>
                             </div>
@@ -117,7 +114,7 @@
                         </div>
                         <div>
                             <div class="tw-text-sm">
-                                <a :href="business.facebook_link">
+                                <a target="_blank" :href="business.facebook_link">
                                     @{{ business.facebook_link }}
                                 </a>
                             </div>
