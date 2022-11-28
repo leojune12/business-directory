@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Businesses\Entities\Business;
 
-class BrowseController extends Controller
+class BrowseBusinessController extends Controller
 {
     public $module = 'Browse';
 

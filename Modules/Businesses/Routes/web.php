@@ -3,9 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Businesses\Http\Controllers\BusinessesController;
 
-// use Modules\Browse\Http\Controllers\BrowseController;
-// use Modules\Businesses\Http\Controllers\BusinessesController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes

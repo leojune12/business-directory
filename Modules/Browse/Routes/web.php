@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Browse\Services\BrowseService;
-use Modules\Browse\Http\Controllers\BrowseController;
+use Modules\Browse\Http\Controllers\BrowseBusinessController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,14 +16,14 @@ use Modules\Browse\Http\Controllers\BrowseController;
 */
 // Route::group(['middleware' => ['role:admin']], function () {
 
-//     Route::resource('browse', BrowseController::class);
+//     Route::resource('browse', BrowseBusinessController::class);
 // });
 
 Route::prefix('browse')->group(function () {
 
-    Route::get('/', [BrowseController::class, 'index']);
-    Route::get('/business', [BrowseController::class, 'index']);
-    // Route::get('/business/{id}/{slug?}', [BrowseController::class, 'businessShow']);
+    Route::get('/', [BrowseBusinessController::class, 'index']);
+    Route::get('/business', [BrowseBusinessController::class, 'index']);
+    // Route::get('/business/{id}/{slug?}', [BrowseBusinessController::class, 'businessShow']);
 });
 
 Route::get('search-business-name/{business_name?}', function ($business_name = '') {
