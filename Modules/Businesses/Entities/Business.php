@@ -20,7 +20,7 @@ class Business extends Model
     use HasFactory, SoftDeletes;
 
     protected $appends = [
-        'user_name',
+        // 'user_name',
         // 'address',
     ];
 
