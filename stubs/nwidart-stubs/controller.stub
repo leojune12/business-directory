@@ -15,7 +15,7 @@ class $CLASS$ extends Controller
 
     public function index(Request $request)
     {
-        if ($request->has('page')) {
+        if ($request->wantsJson()) {
             return $this->ajaxHandler($request);
         }
 
