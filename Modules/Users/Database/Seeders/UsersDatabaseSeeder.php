@@ -78,9 +78,9 @@ class UsersDatabaseSeeder extends Seeder
                     $business->subcategories()->attach(Category::find($category_id)->subcategories->random(3));
 
                     // Add Product
-                    // Product::factory(1)->create([
-                    //     'business_id' => $business->id
-                    // ]);
+                    Product::factory(3)->create([
+                        'business_id' => $business->id
+                    ]);
 
                     // Add Service
                     // Service::factory(1)->create([
