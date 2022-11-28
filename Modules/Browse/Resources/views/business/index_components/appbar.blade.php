@@ -77,7 +77,7 @@
 
             <v-spacer></v-spacer>
 
-            @include('browse::index_components.search-section')
+            @include('browse::business.index_components.search-section')
 
             @auth
             <v-menu

@@ -16,7 +16,7 @@ class BrowseBusinessController extends Controller
             return $this->ajaxHandler($request);
         }
 
-        return view('browse::index', [
+        return view('browse::business.index', [
             'module' => $this->module,
         ]);
     }

@@ -24,17 +24,11 @@
                                 <path fill="currentColor" d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" />
                             </svg>
                         </span>
-                        {{-- <div class="tw-truncate tw-w-40 sm:tw-w-72 md:tw-w-80 xl:tw-w-96"> --}}
                         <div class="tw-grid tw-grid-cols-1">
                             <div class="tw-col-span-1 tw-truncate">
                                 @{{ item.full_address }}
                             </div>
                         </div>
-                        {{-- <div class="tw-grid tw-grid-cols-2">
-                            <div class="tw-col-span-1 tw-truncate">
-                                @{{ item.full_address }} @{{ item.full_address }}
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
             </div>
