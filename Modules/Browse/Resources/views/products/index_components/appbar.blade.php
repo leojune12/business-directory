@@ -30,7 +30,7 @@
             >
                 <div class="tw-w-60 tw-mr-1">
                     <v-combobox
-                        placeholder="Search Business"
+                        placeholder="Search Product"
                         {{-- append-icon="mdi-magnify" --}}
                         solo
                         hide-details

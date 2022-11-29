@@ -161,10 +161,18 @@
                 await axios.get('/search-address/' + this.advanceFilters.location)
                     .then(response => {
 
+                        let itemsArray = []
+
+                        response.data.forEach((item) => {
+
+                            itemsArray.push(this.ucWords(item.address))
+                        });
+
                         this.locationLoading = false
-                        this.locationItems = response.data
+                        this.locationItems = itemsArray
                     })
                     .catch(error => {
+                        console.log(error)
                         Swal.fire({
                             title: 'Something went wrong',
                             text: "Please refresh the page.",
@@ -203,6 +211,13 @@
             scrollToTop() {
                 window.scrollTo(0,0);
             },
+
+            ucWords(str) {
+
+                return str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+                    return letter.toUpperCase();
+                });
+            }
         },
     })
     </script>

@@ -34,7 +34,7 @@ class BrowseService
 
         $cityQuery->where('address_city_municipalities.citymunDesc', 'like', $address . '%');
 
-        $cityQuery->select('citymunDesc as address');
+        $cityQuery->selectRaw('CONCAT(citymunDesc, ", CAPIZ") as address');
 
         $brgyQuery = DB::table('address_barangays');
 
@@ -50,6 +50,10 @@ class BrowseService
 
         $brgyQuery->limit(5);
 
-        return $brgyQuery->get();
+        $brgyQuery->orderBy('address', 'asc');
+
+        $result = $brgyQuery->get();
+
+        return $result;
     }
 }
