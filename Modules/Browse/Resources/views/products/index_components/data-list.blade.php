@@ -50,8 +50,8 @@
                                 </svg>
                             </span>
                             <div class="tw-grid">
-                                <div class="tw-truncate" :title="item.business.name">
-                                    @{{ item.business.name }}
+                                <div class="tw-truncate" :title="item.business_name">
+                                    @{{ item.business_name }}
                                 </div>
                             </div>
                         </div>
@@ -62,8 +62,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <div class="tw-text-xs tw-font-light tw-text-gray-700 bd-truncate-overflow-sm" :title="item.business.full_address">
-                                    @{{ item.business.full_address }}
+                                <div class="tw-text-xs tw-font-light tw-text-gray-700 bd-truncate-overflow-sm" :title="item.business_full_address">
+                                    @{{ item.business_full_address }}
                                 </div>
                             </div>
                         </div>

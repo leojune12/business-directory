@@ -124,6 +124,7 @@
 
             search(dialog) {
 
+                this.options.page = 1
                 this.fetchTableData()
             },
 

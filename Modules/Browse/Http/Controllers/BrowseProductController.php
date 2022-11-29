@@ -26,14 +26,21 @@ class BrowseProductController extends Controller
 
     public function ajaxHandler($request)
     {
-        $query = Product::whereNull('deleted_at');
+        $query = DB::table('products');
 
-        // Eager Loading
-        $query->with('business');
+        $query->orderBy($request->orderBy ?? 'id', $request->orderType ?? 'DESC');
+
+        $query->join('businesses', 'businesses.id', '=', 'products.business_id');
+
+        $query->select(
+            'products.*',
+            'businesses.name as business_name',
+            'businesses.full_address as business_full_address',
+        );
 
         $this->queryHandler($query, $request);
 
-        $query->orderBy($request->orderBy ?? 'id', $request->orderType ?? 'DESC');
+        $query->limit(18);
 
         return $query->paginate($request->perPage);
     }
@@ -41,11 +48,11 @@ class BrowseProductController extends Controller
     public function queryHandler($query, $request)
     {
         $query->when($request->product_name != 'null', function ($query) use ($request) {
-            return $query->where('name', 'like', $request->product_name . '%');
+            return $query->where('products.name', 'like', $request->product_name . '%');
         });
 
         $query->when($request->location != 'null', function ($query) use ($request) {
-            return $query->where('full_address', 'like', '%' .$request->location . '%');
+            return $query->where('businesses.full_address', 'like', '%' .$request->location . '%');
         });
 
         return $query;

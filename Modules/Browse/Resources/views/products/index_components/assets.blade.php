@@ -107,6 +107,7 @@
 
                 await axios.get(this.url + this.getFilters + this.getAdvanceFilters)
                     .then(response => {
+                        console.log(response.data)
                         this.pagination = response.data
                         this.options.page = response.data.current_page
                         this.options.itemsPerPage = parseInt(response.data.per_page)
@@ -124,6 +125,7 @@
 
             search(dialog) {
 
+                this.options.page = 1
                 this.fetchTableData()
             },
 
