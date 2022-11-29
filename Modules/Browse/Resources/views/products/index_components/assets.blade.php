@@ -27,7 +27,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
-    <script src="https://unpkg.com/vue-infinite-loading@^2/dist/vue-infinite-loading.js"></script>
+    {{-- <script src="https://unpkg.com/vue-infinite-loading@^2/dist/vue-infinite-loading.js"></script> --}}
 
     <script type="text/javascript">
     new Vue({
@@ -41,7 +41,6 @@
                 options: {
                     itemsPerPage: 18
                 },
-                selected: [],
                 pagination: {
                     data: [],
                 },
@@ -125,14 +124,7 @@
 
             search(dialog) {
 
-                if (!!dialog) {
-
-                    dialog.value = false
-                }
-
-                this.pagination.data = []
-                this.advanceFilters.page = 1
-                this.$refs.infiniteLoading.$emit("$InfiniteLoading:reset", { target: this.$refs.infiniteLoading, });
+                this.fetchTableData()
             },
 
             async fetchBusinessNames() {

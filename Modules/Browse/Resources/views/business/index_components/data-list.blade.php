@@ -1,15 +1,25 @@
-<div>
-    <div
-        v-for="item in pagination.data"
-        :key="item.id"
-        class="tw-p-0"
-    >
-        <div class="tw-border tw-shadow tw-rounded-md tw-p-4 tw-w-full tw-mx-auto tw-bg-white tw-mb-6">
+<v-data-iterator
+    v-show="!loading"
+    :items="pagination.data"
+    :options.sync="options"
+    :server-items-length="pagination.total"
+    :footer-props="footerProps"
+    item-key="id"
+    hide-default-footer
+>
+    <template v-slot:default="props">
+
+        <div
+            v-for="item in pagination.data"
+            :key="item.id"
+            class="tw-p-0"
+        >
+        <div class="tw-border tw-shadow tw-rounded-md tw-p-4 tw-w-full tw-mx-auto tw-bg-white tw-mb-4">
             <div class="tw-flex md:tw-space-x-4 tw-space-x-3 tw-mb-4">
                 <img
                     :src="getImage(item.name)"
                     {{-- src="https://picsum.photos/seed/picsum/200" --}}
-                    alt="John"
+                    alt="photo"
                     class="tw-rounded-full md:tw-h-14 md:tw-w-14 tw-h-10 tw-w-10 tw-ring-2 tw-ring-gray-300"
                 >
                 <div class="tw-flex tw-flex-1 tw-flex-col tw-justify-center tw-space-y-1">
@@ -55,27 +65,18 @@
                 </div>
             </div>
             <div class="">
-                <div class="md:tw-text-sm tw-text-xs tw-text-gray-600">
+                <div class="md:tw-text-sm tw-text-xs tw-text-gray-600 bd-truncate-overflow">
                     @{{ item.description }}
                 </div>
             </div>
         </div>
     </div>
-    <infinite-loading
-        ref="infiniteLoading"
-        @infinite="fetchTableData"
-        spinner="spiral"
-        class="tw-p-0"
-    >
-        <div slot="spinner">
-            {{-- Skeleton Loader --}}
-            @include('browse::business.index_components.skeleton-loader')
-        </div>
-        <div slot="no-more">
-            No more result.
-        </div>
-        <div slot="no-results">
-            No result. Try other name or location.
-        </div>
-    </infinite-loading>
-</div>
+
+        <v-pagination
+            v-model="options.page"
+            :length="pagination.last_page"
+            :total-visible="6"
+            color="#2563EB"
+        ></v-pagination>
+    </template>
+</v-data-iterator>

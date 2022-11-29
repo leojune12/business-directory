@@ -13,6 +13,12 @@
 
             box-shadow: none !important;
         }
+
+        .top-pagination .v-pagination__navigation {
+
+            margin-left: 4px;
+            margin-right: 4px;
+        }
     </style>
 @endpush
 @push('scripts')
@@ -20,7 +26,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
-    <script src="https://unpkg.com/vue-infinite-loading@^2/dist/vue-infinite-loading.js"></script>
+    {{-- <script src="https://unpkg.com/vue-infinite-loading@^2/dist/vue-infinite-loading.js"></script> --}}
     <script type="text/javascript">
     new Vue({
         el: '#app',
@@ -30,11 +36,19 @@
             return {
                 url: '/browse',
                 loading: true,
+                options: {
+                    itemsPerPage: 12
+                },
                 pagination: {
                     data: [],
                 },
+                footerProps: {
+                    showFirstLastPage: true,
+                    itemsPerPageOptions: [12, 25, 50],
+                    prevIcon: 'mdi-arrow-left',
+                    nextIcon: 'mdi-arrow-right',
+                },
                 advanceFilters: {
-                    page: 1,
                     business_name: null,
                     location: null,
                 },
@@ -47,12 +61,25 @@
             }
         },
 
+        watch: {
+            options: {
+                handler () {
+                    this.fetchTableData()
+                },
+                deep: true,
+            },
+        },
+
         computed: {
             getFilters () {
 
+                let { sortBy, sortDesc, page, itemsPerPage } = this.options
+
                 let filters = '?'
-                filters += 'page=' + this.advanceFilters.page
-                filters += '&perPage=10'
+                filters += 'page=' + page
+                filters += '&perPage=' + itemsPerPage
+                filters += '&orderBy=' + sortBy
+                filters += '&orderType=' + (sortDesc[0] ? 'ASC' : 'DESC')
 
                 return filters
             },
@@ -73,22 +100,15 @@
 
             async fetchTableData($state) {
 
+                this.scrollToTop()
                 this.loading = true
 
                 await axios.get(this.url + this.getFilters + this.getAdvanceFilters)
                     .then(response => {
 
-                        if (response.data.data.length) {
-                            this.pagination.data.push(...response.data.data)
-
-                            this.advanceFilters.page += 1
-
-                            $state.loaded();
-                        } else {
-
-                            $state.complete();
-                        }
-
+                        this.pagination = response.data
+                        this.options.page = response.data.current_page
+                        this.options.itemsPerPage = parseInt(response.data.per_page)
                         this.loading = false
                     })
                     .catch(error => {
@@ -104,14 +124,7 @@
 
             search(dialog) {
 
-                if (!!dialog) {
-
-                    dialog.value = false
-                }
-
-                this.pagination.data = []
-                this.advanceFilters.page = 1
-                this.$refs.infiniteLoading.$emit("$InfiniteLoading:reset", { target: this.$refs.infiniteLoading, });
+                this.fetchTableData()
             },
 
             async fetchBusinessNames() {
@@ -185,6 +198,10 @@
                 ]
 
                 return images[Math.floor(Math.random()*images.length)]
+            },
+
+            scrollToTop() {
+                window.scrollTo(0,0);
             },
         },
     })

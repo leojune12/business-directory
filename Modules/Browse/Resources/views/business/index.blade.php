@@ -10,7 +10,7 @@
             @include('browse::business.index_components.tabs')
         </div>
         <v-main class="tw-z-0">
-            <v-container class="tw-py-6 md:tw-py-10">
+            <v-container class="tw-py-6 tw-px-1 md:tw-px-3">
                 <v-row>
                     <v-col
                         cols="12"
@@ -18,11 +18,24 @@
                         class="tw-flex tw-flex-col tw-gap-y-5"
                         offset-md="3"
                     >
-                        <div>
+                        <div class="tw-flex tw-items-center tw-justify-between">
                             <div class="tw-mb-0 tw-text-xl tw-font-bold">
-                                Browse For Business
+                                Business
+                            </div>
+                            <div class="tw-flex tw-items-center tw-gap-1 top-pagination">
+                                <div class="tw-text-sm tw-text-gray-500">
+                                    @{{ pagination.current_page }}/@{{ pagination.last_page }}
+                                </div>
+                                <v-pagination
+                                    v-model="options.page"
+                                    :length="pagination.last_page"
+                                    :total-visible="0"
+                                ></v-pagination>
                             </div>
                         </div>
+
+                        {{-- Skeleton Loader --}}
+                        @include('browse::business.index_components.skeleton-loader')
 
                         {{-- Data List --}}
                         @include('browse::business.index_components.data-list')

@@ -18,7 +18,7 @@
                 <div class="tw-bg-white tw-rounded-sm tw-overflow-hidden tw-drop-shadow tw-w-full tw-flex tw-flex-col tw-justify-between">
                     <img
                         :src="getImage(item.name)"
-                        :alt="item.name"
+                        alt="photo"
                         class="tw-w-full tw-h-auto bd-min-h-28"
                     >
                     <div class="tw-p-2 tw-grid tw-grid-cols-1">
