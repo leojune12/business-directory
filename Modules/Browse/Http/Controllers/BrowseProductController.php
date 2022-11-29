@@ -40,8 +40,12 @@ class BrowseProductController extends Controller
 
     public function queryHandler($query, $request)
     {
-        $query->when($request->name != 'null', function ($query) use ($request) {
-            return $query->where('name', 'like', '%' . $request->name . '%');
+        $query->when($request->product_name != 'null', function ($query) use ($request) {
+            return $query->where('name', 'like', $request->product_name . '%');
+        });
+
+        $query->when($request->location != 'null', function ($query) use ($request) {
+            return $query->where('full_address', 'like', '%' .$request->location . '%');
         });
 
         return $query;

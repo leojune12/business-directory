@@ -23,6 +23,26 @@ class BrowseService
 
         $query->select(['name']);
 
+        $query->orderBy('name', 'asc');
+
+        return $query->get();
+    }
+
+    public static function searchProductName($product_name = '')
+    {
+
+        $query = DB::table('products');
+
+        $query->whereNull('deleted_at');
+
+        $query->where('name', 'like', '%' . $product_name . '%');
+
+        $query->limit(5);
+
+        $query->select(['name']);
+
+        $query->orderBy('name', 'asc');
+
         return $query->get();
     }
 

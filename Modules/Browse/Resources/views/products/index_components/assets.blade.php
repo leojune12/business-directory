@@ -51,11 +51,11 @@
                     nextIcon: 'mdi-arrow-right',
                 },
                 advanceFilters: {
-                    business_name: null,
+                    product_name: null,
                     location: null,
                 },
-                businessItemsDebounce: null,
-                businessItems: [],
+                productItemsDebounce: null,
+                productItems: [],
                 searchLoading: false,
                 locationItemsDebounce: null,
                 locationItems: [],
@@ -127,13 +127,13 @@
                 this.fetchTableData()
             },
 
-            async fetchBusinessNames() {
+            async fetchProductNames() {
 
-                await axios.get('/search-business-name/' + this.advanceFilters.business_name)
+                await axios.get('/search-product-name/' + this.advanceFilters.product_name)
                     .then(response => {
 
                         this.searchLoading = false
-                        this.businessItems = response.data
+                        this.productItems = response.data
                     })
                     .catch(error => {
                         Swal.fire({
@@ -145,14 +145,14 @@
                     })
             },
 
-            showBusinessNames() {
+            showProductNames() {
 
-                if (this.businessItemsDebounce) clearTimeout(this.businessItemsDebounce)
+                if (this.productItemsDebounce) clearTimeout(this.productItemsDebounce)
 
-                this.businessItemsDebounce = setTimeout(() => {
+                this.productItemsDebounce = setTimeout(() => {
 
                     this.searchLoading = true
-                    this.fetchBusinessNames()
+                    this.fetchProductNames()
                 }, 600)
             },
 

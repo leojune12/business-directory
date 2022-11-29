@@ -32,14 +32,14 @@
                 </div>
                 <div class="tw-mb-5">
                     <v-combobox
-                        placeholder="Business"
+                        placeholder="Product"
                         prepend-inner-icon="mdi-magnify"
                         solo
                         hide-details
-                        :items="businessItems"
-                        :search-input.sync="advanceFilters.business_name"
+                        :items="productItems"
+                        :search-input.sync="advanceFilters.product_name"
                         v-on:keyup.enter="search()"
-                        v-on:keydown="showBusinessNames()"
+                        v-on:keydown="showProductNames()"
                         item-text="name"
                         :loading="searchLoading"
                         clearable
