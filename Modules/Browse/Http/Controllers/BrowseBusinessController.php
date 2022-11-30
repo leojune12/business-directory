@@ -8,7 +8,7 @@ use Modules\Businesses\Entities\Business;
 
 class BrowseBusinessController extends Controller
 {
-    public $module = 'Browse';
+    public $module = 'Business';
 
     public function index(Request $request)
     {

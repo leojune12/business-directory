@@ -3,14 +3,14 @@
 </div> --}}
 <div class="tw-mb-4">
     <v-combobox
-        placeholder="Search Product"
-        prepend-inner-icon="mdi-shopping-outline"
+        placeholder="Search Business"
+        prepend-inner-icon="mdi-storefront-outline"
         solo
         hide-details
-        :items="productItems"
-        :search-input.sync="advanceFilters.product_name"
+        :items="businessItems"
+        :search-input.sync="advanceFilters.business_name"
         v-on:keyup.enter="search()"
-        v-on:keydown="showProductNames()"
+        v-on:keydown="showBusinessNames()"
         item-text="name"
         :loading="searchLoading"
         clearable

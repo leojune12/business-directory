@@ -13,10 +13,18 @@
             <v-container class="tw-py-6 tw-px-1 md:tw-px-3">
                 <v-row>
                     <v-col
+                        v-if=!$vuetify.breakpoint.smAndDown
+                        cols="12"
+                        md="3"
+                        class="tw-pt-20"
+                    >
+                        {{-- Search Section MD --}}
+                        @include('browse::business.index_components.search-section-md')
+                    </v-col>
+                    <v-col
                         cols="12"
                         md="6"
                         class="tw-flex tw-flex-col tw-gap-y-5"
-                        offset-md="3"
                     >
                         {{-- Data List Header --}}
                         @include('browse::business.index_components.data-list-header')

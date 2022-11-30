@@ -24,14 +24,13 @@
                 </v-toolbar-title>
             </a>
 
-            <div
+            {{-- <div
                 v-if=!$vuetify.breakpoint.smAndDown
                 class="tw-flex"
             >
                 <div class="tw-w-60 tw-mr-1">
                     <v-combobox
                         placeholder="Search Business"
-                        {{-- append-icon="mdi-magnify" --}}
                         solo
                         hide-details
                         :items="businessItems"
@@ -48,7 +47,6 @@
                 <div class="tw-w-60 tw-mr-1">
                     <v-combobox
                         placeholder="Location"
-                        {{-- prepend-inner-icon="mdi-map-marker-radius" --}}
                         solo
                         hide-details
                         :items="locationItems"
@@ -73,7 +71,7 @@
                         Search
                     </v-btn>
                 </div>
-            </div>
+            </div> --}}
 
             <v-spacer></v-spacer>
 

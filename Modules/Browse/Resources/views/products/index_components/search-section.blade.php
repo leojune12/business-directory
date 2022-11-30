@@ -21,7 +21,7 @@
             >
                 <div class="tw-mb-5 tw-flex tw-items-center tw-justify-between">
                     <h5 class="tw-mb-0">
-                        Search In Capiz
+                        {{-- Search In Capiz --}}
                     </h5>
                     <v-btn
                         icon
@@ -32,8 +32,8 @@
                 </div>
                 <div class="tw-mb-5">
                     <v-combobox
-                        placeholder="Product"
-                        prepend-inner-icon="mdi-magnify"
+                        placeholder="Search Product"
+                        prepend-inner-icon="mdi-shopping-outline"
                         solo
                         hide-details
                         :items="productItems"
@@ -70,6 +70,7 @@
                         elevation="2"
                         @click="search(dialog)"
                     >
+                        <v-icon>mdi-magnify</v-icon>
                         Search
                     </v-btn>
                 </div>
