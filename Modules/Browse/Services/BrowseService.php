@@ -76,4 +76,22 @@ class BrowseService
 
         return $result;
     }
+
+    public static function searchSubcategories($category_id = '')
+    {
+
+        $query = DB::table('subcategories');
+
+        $query->whereNull('deleted_at');
+
+        $query->where('category_id', $category_id);
+
+        // $query->limit(5);
+
+        $query->select(['id', 'name']);
+
+        $query->orderBy('name', 'asc');
+
+        return $query->get();
+    }
 }

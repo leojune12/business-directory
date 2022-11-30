@@ -46,7 +46,7 @@
                 <svg style="width:16px;height:16px" viewBox="0 0 24 24" class="tw-text-gray-400 tw-mr-1">
                     <path fill="currentColor" d="M19,5V7H15V5H19M9,5V11H5V5H9M19,13V19H15V13H19M9,17V19H5V17H9M21,3H13V9H21V3M11,3H3V13H11V3M21,11H13V21H21V11M11,15H3V21H11V15Z" />
                 </svg>
-                <span class="tw-text-xs tw-font-bold tw-uppercase tw-leading-none">@{{ item.category.name }}</span>
+                <span class="tw-text-xs tw-font-bold tw-uppercase tw-leading-none">@{{ item.category_name }}</span>
             </div>
             <div class="tw-flex tw-mb-1">
                 <v-rating

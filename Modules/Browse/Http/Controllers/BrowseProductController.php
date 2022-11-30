@@ -28,6 +28,8 @@ class BrowseProductController extends Controller
     {
         $query = DB::table('products');
 
+        $query->whereNull('products.deleted_at');
+
         $query->orderBy($request->orderBy ?? 'id', $request->orderType ?? 'DESC');
 
         $query->join('businesses', 'businesses.id', '=', 'products.business_id');
@@ -39,8 +41,6 @@ class BrowseProductController extends Controller
         );
 
         $this->queryHandler($query, $request);
-
-        $query->limit(18);
 
         return $query->paginate($request->perPage);
     }

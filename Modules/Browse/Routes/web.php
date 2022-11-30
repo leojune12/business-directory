@@ -31,3 +31,8 @@ Route::get('search-address/{address?}', function ($address = '') {
 
     return BrowseService::searchAddress($address);
 });
+
+Route::get('search-subcategories/{category_id}', function ($category_id = '') {
+
+    return BrowseService::searchSubcategories($category_id);
+});

@@ -24,7 +24,8 @@
 @push('scripts')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     {{-- <script src="https://unpkg.com/vue-infinite-loading@^2/dist/vue-infinite-loading.js"></script> --}}
     <script type="text/javascript">
@@ -51,6 +52,8 @@
                 advanceFilters: {
                     business_name: null,
                     location: null,
+                    category_id: null,
+                    subcategory_id: null,
                 },
                 businessItemsDebounce: null,
                 businessItems: [],
@@ -58,6 +61,9 @@
                 locationItemsDebounce: null,
                 locationItems: [],
                 locationLoading: false,
+                categories: {!! $categories ?? [] !!},
+                subcategories: [],
+                subcategoryLoading: false,
             }
         },
 
@@ -65,6 +71,12 @@
             options: {
                 handler () {
                     this.fetchTableData()
+                },
+                deep: true,
+            },
+            'advanceFilters.category_id': {
+                handler () {
+                    this.fetchSubcategories()
                 },
                 deep: true,
             },
@@ -123,6 +135,11 @@
             },
 
             search(dialog) {
+
+                if (dialog) {
+
+                    dialog.value = false
+                }
 
                 this.options.page = 1
                 this.fetchTableData()
@@ -220,6 +237,26 @@
                 return str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
                     return letter.toUpperCase();
                 });
+            },
+
+            async fetchSubcategories() {
+
+                this.subcategoryLoading = true
+
+                await axios.get('/search-subcategories/' + this.advanceFilters.category_id)
+                    .then(response => {
+
+                        this.subcategoryLoading = false
+                        this.subcategories = response.data
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            title: 'Something went wrong',
+                            text: "Please refresh the page.",
+                            icon: 'error',
+                            confirmButtonColor: '#d33',
+                        })
+                    })
             }
         },
     })

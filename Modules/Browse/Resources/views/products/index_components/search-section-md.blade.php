@@ -4,7 +4,7 @@
 <div class="tw-mb-4">
     <v-combobox
         placeholder="Search Product"
-        prepend-inner-icon="mdi-shopping-outline"
+        {{-- prepend-inner-icon="mdi-shopping-outline" --}}
         solo
         hide-details
         :items="productItems"
@@ -21,7 +21,7 @@
 <div class="tw-mb-4">
     <v-combobox
         placeholder="Location"
-        prepend-inner-icon="mdi-map-marker-radius"
+        {{-- prepend-inner-icon="mdi-map-marker-radius" --}}
         solo
         hide-details
         :items="locationItems"
