@@ -39,6 +39,7 @@ class BrowseBusinessController extends Controller
         $query->select(
             'businesses.id',
             'businesses.name',
+            'businesses.slug',
             'businesses.full_address',
             'businesses.rating',
             'businesses.description',
