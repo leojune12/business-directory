@@ -77,6 +77,7 @@
             :length="pagination.last_page"
             :total-visible="6"
             color="#2563EB"
+            :disabled="loading"
         ></v-pagination>
     </template>
 </v-data-iterator>

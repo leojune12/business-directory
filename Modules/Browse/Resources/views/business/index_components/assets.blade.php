@@ -24,8 +24,8 @@
 @push('scripts')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script> --}}
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     {{-- <script src="https://unpkg.com/vue-infinite-loading@^2/dist/vue-infinite-loading.js"></script> --}}
     <script type="text/javascript">
@@ -110,10 +110,10 @@
 
         methods: {
 
-            async fetchTableData($state) {
+            async fetchTableData() {
 
-                this.scrollToTop()
                 this.loading = true
+                this.scrollToTop()
 
                 await axios.get(this.url + this.getFilters + this.getAdvanceFilters)
                     .then(response => {

@@ -10,6 +10,7 @@
             v-model="options.page"
             :length="pagination.last_page"
             :total-visible="0"
+            :disabled="loading"
         ></v-pagination>
     </div>
 </div>
