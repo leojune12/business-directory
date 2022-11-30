@@ -1,3 +1,10 @@
+// Breakpoints
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
 .bd-min-w-40 {
 
     min-width: 10rem;
@@ -11,13 +18,21 @@
 .bd-truncate-overflow {
 
     --max-lines: 2;
-    --lh: 1.25rem;
+    --lh: 1rem;
+
+    @media (min-width: $md) {
+
+        --lh: 1.25rem;
+    }
+
     line-height: var(--lh);
 
     position: relative;
     max-height: calc(var(--lh) * var(--max-lines));
     overflow: hidden;
     padding-right: 1rem; /* space for ellipsis */
+
+
 }
 
 .bd-truncate-overflow::before {
