@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('business_id');
             $table->string('name');
+            $table->string('slug');
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2)->nullable();
             $table->boolean('is_available')->default(1);
