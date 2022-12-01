@@ -14,17 +14,19 @@
                     <div
                         class="tw-flex tw-items-center tw-pt-2 md:tw-pt-0"
                     >
-                        <div class="md:tw-mr-6 tw-mr-3">
+                        <div class="tw-flex-none tw-mr-4">
                             <img
                                 src="https://api.lorem.space/image/burger?w=150&h=150"
                                 alt=""
                                 class="tw-w-10 tw-h-10 tw-rounded-full tw-border-x tw-border-gray-400"
                             >
                         </div>
-                        <div
-                            class="tw-text-xl tw-font-bold tw-text-center md:tw-text-start"
-                        >
-                            @{{ business.name }}
+                        <div class="tw-grid">
+                            <div
+                                class="tw-text-xl tw-font-bold tw-text-center md:tw-text-start tw-truncate"
+                            >
+                                @{{ business.name }}
+                            </div>
                         </div>
                     </div>
                     <div

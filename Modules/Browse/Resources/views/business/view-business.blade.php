@@ -13,8 +13,8 @@
         </div>
         <div class="tw-sticky tw-top-0 tw-z-50">
             @include('browse::business.view_business_components.tabs')
-        </div>
-        <div class="tw-drop-shadow tw-bg-white tw-h-px">
+            <div class="tw-shadow tw-bg-white tw-h-px">
+            </div>
         </div>
         <v-main class="tw-z-0">
             @include('browse::business.view_business_components.business-info-content')
