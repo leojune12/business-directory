@@ -16,7 +16,7 @@
                         <svg style="width:16px;height:16px" viewBox="0 0 24 24" class="tw-mr-3">
                             <path fill="currentColor" d="M19,5V7H15V5H19M9,5V11H5V5H9M19,13V19H15V13H19M9,17V19H5V17H9M21,3H13V9H21V3M11,3H3V13H11V3M21,11H13V21H21V11M11,15H3V21H11V15Z" />
                         </svg>
-                        @{{ business.category.name }}
+                        @{{ business.category_name }}
                     </div>
                 </div>
                 <div class="tw-mb-7">
@@ -26,11 +26,11 @@
                     <div class="tw-flex tw-items-center tw-text-sm tw-text-gray-600">
                         <ul class="tw-p-0 tw-mb-0">
                             <li
-                                v-for="category in business.subcategories"
-                                :key="category.id"
+                                v-for="subcategory in subcategories"
+                                :key="subcategory.id"
                                 class="tw-flex tw-align-center"
                             >
-                                @{{ category.name }}
+                                @{{ subcategory.name }}
                             </li>
                         </ul>
                     </div>

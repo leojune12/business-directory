@@ -7,8 +7,8 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script> --}}
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> --}}
 
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
 
@@ -23,6 +23,7 @@
                 business: {
                     ...@json($model ?? []),
                 },
+                subcategories: {!! $subcategories ?? [] !!},
                 windowTop: 0,
                 showInfoOnTab: false,
                 headerHeight: 0
@@ -34,30 +35,7 @@
         },
 
         computed: {
-            // Convert subcategories to string
-            subcategories: function () {
-
-                if (!!this.business.subcategories.length) {
-
-                    let subcategories_string = ""
-
-                    this.business.subcategories.forEach((category, index, array) => {
-
-                        subcategories_string += category.name
-
-                        // Add comma
-                        if (array.length-1 != index) {
-
-                            subcategories_string += ', '
-                        }
-                    });
-
-                    return subcategories_string
-                } else {
-
-                    return "None"
-                }
-            }
+            //
         },
 
         methods: {

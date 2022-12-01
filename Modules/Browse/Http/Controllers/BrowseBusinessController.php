@@ -68,19 +68,53 @@ class BrowseBusinessController extends Controller
         return $query;
     }
 
-    public function businessShow($id, $slug = '')
+    public function viewBusiness($id, $slug = '')
     {
-        $model = Business::findOrFail($id)->load('category', 'subcategories', 'region', 'province', 'city', 'barangay');
+        $business = DB::table('businesses');
+        $business->whereNull('businesses.deleted_at');
+        $business->where('businesses.id', $id);
+        $business->join('categories', 'categories.id', '=', 'businesses.category_id');
+        $business->select(
+            'businesses.id',
+            'businesses.name',
+            'businesses.slug',
+            'businesses.category_id',
+            'businesses.full_address',
+            'businesses.rating',
+            'businesses.description',
+            'businesses.contact_number',
+            'businesses.email',
+            'businesses.website',
+            'businesses.facebook_link',
+            'businesses.map_location',
+            'categories.name as category_name',
+        );
 
-        if ($model->slug != $slug) {
+        $model = $business->first();
+
+        if ($slug != $model->slug) {
 
             abort(404);
         }
 
-        return view('businesses::show', [
+        $subcategories = DB::table('business_subcategories');
+        $subcategories->whereNull('business_subcategories.deleted_at');
+        $subcategories->where('business_subcategories.business_id', $id);
+
+        $subcategories->join('subcategories', 'subcategories.id', '=', 'business_subcategories.subcategory_id');
+
+        $subcategories->select(
+            'subcategories.id',
+            'subcategories.name',
+        );
+
+        $subcategories->orderBy('name', 'asc');
+
+        return view('browse::business.view-business', [
             'module' => $this->module,
             'method' => 'View',
             'model' => $model,
+            'subcategories' => $subcategories->get(),
         ]);
     }
 }

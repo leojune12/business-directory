@@ -218,19 +218,19 @@ class BusinessesController extends Controller
         }
     }
 
-    public function viewBusiness($id, $slug = '')
-    {
-        $model = Business::findOrFail($id)->load('category', 'subcategories', 'region', 'province', 'city', 'barangay');
+    // public function viewBusiness($id, $slug = '')
+    // {
+    //     $model = Business::findOrFail($id)->load('category', 'subcategories', 'region', 'province', 'city', 'barangay');
 
-        if ($slug != $model->slug) {
+    //     if ($slug != $model->slug) {
 
-            abort(404);
-        }
+    //         abort(404);
+    //     }
 
-        return view('businesses::view-business', [
-            'module' => $this->module,
-            'method' => 'View',
-            'model' => $model,
-        ]);
-    }
+    //     return view('businesses::view-business', [
+    //         'module' => $this->module,
+    //         'method' => 'View',
+    //         'model' => $model,
+    //     ]);
+    // }
 }

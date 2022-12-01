@@ -17,6 +17,3 @@ Route::group(['middleware' => ['role:admin']], function () {
 
     Route::resource('businesses', BusinessesController::class);
 });
-
-// Public
-Route::get('/business/{id}/{slug?}', [BusinessesController::class, 'viewBusiness']);

@@ -36,3 +36,5 @@ Route::get('search-subcategories/{category_id}', function ($category_id = '') {
 
     return BrowseService::searchSubcategories($category_id);
 });
+
+Route::get('/business/{id}/{slug?}', [BrowseBusinessController::class, 'viewBusiness']);
