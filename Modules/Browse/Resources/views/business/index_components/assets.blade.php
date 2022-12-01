@@ -147,7 +147,7 @@
 
             async fetchBusinessNames() {
 
-                await axios.get('/search-business-name/' + this.advanceFilters.business_name)
+                await axios.get('/api/search-business-name/' + this.advanceFilters.business_name)
                     .then(response => {
 
                         this.searchLoading = false
@@ -176,7 +176,7 @@
 
             async fetchLocationNames() {
 
-                await axios.get('/search-address/' + this.advanceFilters.location)
+                await axios.get('/api/search-address/' + this.advanceFilters.location)
                     .then(response => {
 
                         let itemsArray = []
@@ -243,7 +243,7 @@
 
                 this.subcategoryLoading = true
 
-                await axios.get('/search-subcategories/' + this.advanceFilters.category_id)
+                await axios.get('/api/search-subcategories/' + this.advanceFilters.category_id)
                     .then(response => {
 
                         this.subcategoryLoading = false
