@@ -12,7 +12,7 @@
             <a
                 v-for="item in props.items"
                 :key="item.id"
-                href="#"
+                :href="'/product/' + item.id + '/' + item.slug"
                 class="tw-w-1/2 md:tw-w-1/3 md:tw-p-2 tw-p-1 tw-transition tw-ease-in-out tw-delay-100 tw-duration-200 hover:tw-scale-105- hover:tw--translate-y-0.5- tw-flex"
             >
                 <div class="tw-bg-white tw-rounded-sm tw-overflow-hidden tw-drop-shadow tw-w-full tw-flex tw-flex-col tw-justify-between">

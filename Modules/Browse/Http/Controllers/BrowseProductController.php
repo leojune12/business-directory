@@ -29,13 +29,17 @@ class BrowseProductController extends Controller
         $query = DB::table('products');
 
         $query->whereNull('products.deleted_at');
+        $query->where('products.is_available', 1);
 
         $query->orderBy($request->orderBy ?? 'id', $request->orderType ?? 'DESC');
 
         $query->join('businesses', 'businesses.id', '=', 'products.business_id');
 
         $query->select(
-            'products.*',
+            'products.id',
+            'products.name',
+            'products.slug',
+            'products.price',
             'businesses.name as business_name',
             'businesses.full_address as business_full_address',
         );
@@ -58,148 +62,36 @@ class BrowseProductController extends Controller
         return $query;
     }
 
-    public function create()
+    public function viewProduct($id, $slug = '')
     {
-        return view('browse::form', [
-            'module' => $this->module,
-            'method' => 'Create',
-        ]);
-    }
+        $product = DB::table('products');
+        $product->whereNull('products.deleted_at');
+        $product->where('products.is_available', 1);
+        $product->where('products.id', $id);
+        $product->join('businesses', 'businesses.id' , '=', 'products.business_id');
+        $product->select(
+            'products.id',
+            'products.name',
+            'products.slug',
+            'products.description',
+            'products.price',
+            'products.price',
+            'businesses.id as business_id',
+            'businesses.name as business_name',
+            'businesses.slug as business_slug'
+        );
 
-    public function store(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-        ]);
+        $model = $product->first();
 
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'error',
-                'title' => 'Whoops!',
-                'message' => 'Please complete the form.',
-                'errors' => $validator->errors(),
-                'old' => $request->all(),
-            ]);
+        if ($slug != $model->slug) {
+
+            abort(404);
         }
 
-        DB::beginTransaction();
-
-        try {
-
-            $model = Product::create($request->only([
-                'name'
-            ]));
-
-            DB::commit();
-
-            return response()->json([
-                'status' => 'success',
-                'title' => 'Success!',
-                'message' => 'Item successfully created.'
-            ]);
-        } catch (Throwable $e) {
-
-            // return $e;
-            DB::rollBack();
-
-            return response()->json([
-                'status' => 'error',
-                'title' => 'Something went wrong!',
-                'message' => 'Please try again.'
-            ]);
-        }
-    }
-
-    public function show($id)
-    {
-        $model = Product::findOrFail($id);
-
-        return view('browse::show', [
+        return view('browse::products.view-product', [
             'module' => $this->module,
             'method' => 'View',
             'model' => $model,
         ]);
-    }
-
-    public function edit($id)
-    {
-        $model = Product::findOrFail($id);
-
-        return view('browse::form', [
-            'module' => $this->module,
-            'method' => 'Update',
-            'model' => $model,
-        ]);
-    }
-
-    public function update(Request $request, $id)
-    {
-        $model = Product::findOrFail($id);
-
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'error',
-                'title' => 'Whoops!',
-                'message' => 'Please complete the form.',
-                'errors' => $validator->errors(),
-                'old' => $request->all(),
-            ]);
-        }
-
-        DB::beginTransaction();
-
-        try {
-
-            $model->update($request->only([
-                'name'
-            ]));
-
-            DB::commit();
-
-            return response()->json([
-                'status' => 'success',
-                'title' => 'Success!',
-                'message' => 'Item successfully updated.'
-            ]);
-        } catch (Throwable $e) {
-
-            return $e;
-            DB::rollBack();
-
-            return response()->json([
-                'status' => 'error',
-                'title' => 'Something went wrong!',
-                'message' => 'Please try again.'
-            ]);
-        }
-    }
-
-    public function destroy(Request $request, $id)
-    {
-        DB::beginTransaction();
-
-        try {
-
-            Product::destroy($request->id_array);
-
-            DB::commit();
-
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Item deleted successfully.'
-            ]);
-        } catch (Throwable $e) {
-
-            DB::rollBack();
-
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Whoops! Something went wrong. Please try again.'
-            ]);
-        }
     }
 }
