@@ -19,11 +19,38 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
 
+    <script src="https://unpkg.com/vue-meta/dist/vue-meta.min.js"></script>
+
     <script type="text/javascript">
 
     new Vue({
         el: '#app',
         vuetify: new Vuetify(),
+        metaInfo: {
+            title: '{{ config('app.name', 'Business Index') }}{{ isset($module) ? " | " . $module : '' }}',
+            meta: [
+                {
+                    vmid: 'og:url',
+                    name: 'og:url',
+                    content: 'https://roxas-index.herokuapp.com',
+                },
+                {
+                    vmid: 'og:title',
+                    name: 'og:title',
+                    content: '{{ config("app.name", "Business Index") }}{{ isset($module) ? " | " . $module : '' }}',
+                },
+                {
+                    vmid: 'og:description',
+                    name: 'og:description',
+                    content: 'List of businesses and establishment in Capiz that offer products and services.',
+                },
+                {
+                    vmid: 'og:image',
+                    name: 'og:image',
+                    content: 'http://roxascity.gov.ph/wp-content/uploads/2021/10/Roxas-City-Drone-Shot-scaled.jpg',
+                },
+            ],
+        },
 
         data() {
             return {

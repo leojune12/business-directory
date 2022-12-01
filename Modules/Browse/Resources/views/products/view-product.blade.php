@@ -1,4 +1,4 @@
-@section('title', isset($module) ? ' | ' . $module : '')
+{{-- @section('title', isset($module) ? ' | ' . $module : '') --}}
 <x-app-layout>
     <v-app
         id="app"
